@@ -1,1 +1,1 @@
-# sample-excel-grid
+# グリッド：Excelスタイルのフィルター (React)
