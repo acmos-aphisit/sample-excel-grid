@@ -2,8 +2,12 @@ import { atom } from 'recoil';
 
 // 一覧インターフェース
 export interface sampleDataList {
-    name: string;                                 // 1
-    surname: string;                                 // 2
+    name: string;
+    surname: string;
+    age: string;
+    gender: string;
+    birthDate: string;
+    checkFlg: boolean;
   }
   
   // 受給者一覧アトム
