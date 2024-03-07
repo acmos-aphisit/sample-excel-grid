@@ -6,7 +6,7 @@ export interface sampleDataList {
     surname: string;
     age: string;
     gender: string;
-    birthDate: string;
+    birthDate: Date | undefined;
     checkFlg: boolean;
   }
   
