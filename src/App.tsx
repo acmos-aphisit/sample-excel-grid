@@ -23,11 +23,11 @@ function App() {
   const bodyData: Atom.sampleDataList[] = useRecoilValue(Atom.sampleListState);
   const setbodyData = useSetRecoilState(Atom.sampleListState);
   const data: Atom.sampleDataList[] = [
-    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: "", checkFlg: false },
-    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: "", checkFlg: false },
-    { surname: "山本", name: "二郎", age: "35", gender: "男性", birthDate: "", checkFlg: false },
-    { surname: "山口", name: "花子", age: "35", gender: "女性", birthDate: "", checkFlg: false },
-    { surname: "", name: "", age: "", gender: "", birthDate: "", checkFlg: false },
+    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: undefined, checkFlg: false },
+    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, checkFlg: false },
+    { surname: "山本", name: "二郎", age: "35", gender: "男性", birthDate: undefined, checkFlg: false },
+    { surname: "山口", name: "花子", age: "35", gender: "女性", birthDate: undefined, checkFlg: false },
+    { surname: "", name: "", age: "", gender: "", birthDate: undefined, checkFlg: false },
   ];
   React.useEffect(() => {
     setbodyData(data);
@@ -39,6 +39,7 @@ function App() {
     { columnId: "age", width: 150 },
     { columnId: "gender", width: 150 },
     { columnId: "birthDate", width: 150 },
+    { columnId: "checkFlg", width: 150 },
   ];
 
   const headerRow: Row = {
@@ -49,6 +50,7 @@ function App() {
       { type: "header", text: "年齢" },
       { type: "header", text: "性別" },
       { type: "header", text: "生年月日" },
+      { type: "header", text: "チェック" },
     ],
   };
 
@@ -61,7 +63,8 @@ function App() {
         { type: "text", text: person.name },
         { type: "text", text: person.age },
         { type: "text", text: person.gender },
-        { type: "text", text: person.birthDate },
+        { type: "date", date: person.birthDate },
+        { type: "checkbox", checked: person.checkFlg },
       ],
     })),
   ];
@@ -70,7 +73,7 @@ function App() {
   const columns = getColumns();
   
   const handleChanges = (changes: CellChange<any>[]) => { 
-    //setbodyData((prevPeople) => applyChangesToPeople(changes, prevPeople)); 
+    //setbodyData((prevPeople) => applyChangesToPeople(changes, prevPeople));
     console.log(changes[0]);
 
     const columnIdx = changes[0].columnId;
@@ -78,7 +81,13 @@ function App() {
       if (key === changes[0].rowId) {
         // コラム名を指定
         const updatedFieldName = `${columnIdx}`;
-        return { ...item, [updatedFieldName]: changes[0].newCell.text };
+        let changedData = changes[0].newCell.text;
+        if (columnIdx == "birthDate") {
+          changedData = changes[0].newCell.date;
+        } else {
+          changedData = changes[0].newCell.checked;
+        }
+        return { ...item, [updatedFieldName]:  changedData};
       } else {
         return item;
       }

@@ -45,8 +45,8 @@
   border: none !important;
 }
 
-.rg-cell {
-  background-color: white;
+.rg-text-cell, .rg-date-cell, .rg-checkbox-cell {
+  background-color: white !important;
 }
 
 @keyframes App-logo-spin {
