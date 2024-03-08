@@ -117,7 +117,7 @@ function App() {
         } else if (columnIdx == "status") {
           changedData = changes[0].newCell.isOpen;
           return { ...item, isOpen:  changedData};
-        } else {
+        } else if (columnIdx == "checkFlg") {
           changedData = changes[0].newCell.checked;
         }
         return { ...item, [updatedFieldName]:  changedData};
