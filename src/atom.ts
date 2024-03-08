@@ -7,7 +7,10 @@ export interface sampleDataList {
     age: string;
     gender: string;
     birthDate: Date | undefined;
+    birthDateStr: string;
     checkFlg: boolean;
+    status: string;
+    isOpen: boolean;
   }
   
   // 受給者一覧アトム
