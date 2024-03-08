@@ -14,6 +14,7 @@
     "@types/react": "^18.2.63",
     "@types/react-dom": "^18.2.20",
     "handsontable": "^14.1.0",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-datasheet": "^1.4.12",
     "react-dom": "^18.2.0",

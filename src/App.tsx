@@ -6,8 +6,9 @@ import * as Atom from "./atom";
 import { RecoilRoot } from "recoil";
 
 /** ReactGrid */
-import { ReactGrid, Column, Row, CellChange, TextCell, DefaultCellTypes} from "@silevis/reactgrid";
+import { ReactGrid, Column, Row, CellChange, TextCell, DefaultCellTypes } from "@silevis/reactgrid";
 import "@silevis/reactgrid/styles.css";
+import moment from 'moment';
 
 /** Handsontable */
 import { registerAllModules } from "handsontable/registry";
@@ -23,54 +24,83 @@ function App() {
   const bodyData: Atom.sampleDataList[] = useRecoilValue(Atom.sampleListState);
   const setbodyData = useSetRecoilState(Atom.sampleListState);
   const data: Atom.sampleDataList[] = [
-    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: undefined, checkFlg: false },
-    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, checkFlg: false },
-    { surname: "山本", name: "二郎", age: "35", gender: "男性", birthDate: undefined, checkFlg: false },
-    { surname: "山口", name: "花子", age: "35", gender: "女性", birthDate: undefined, checkFlg: false },
-    { surname: "", name: "", age: "", gender: "", birthDate: undefined, checkFlg: false },
+    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1987-05-05"), birthDateStr: "", checkFlg: false, status: "活性", isOpen: false },
+    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "山本", name: "二郎", age: "19", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "山口", name: "花子", age: "28", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "佐藤", name: "健太", age: "56", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "田中", name: "さくら", age: "24", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "渡辺", name: "三郎", age: "31", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "高橋", name: "りん", age: "45", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "伊藤", name: "四郎", age: "29", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "鈴木", name: "五郎", age: "30", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1974-12-31"), birthDateStr: "", checkFlg: false, status: "活性", isOpen: false },
+    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "無活性", isOpen: false },
+    { surname: "山本", name: "二郎", age: "19", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "山口", name: "花子", age: "28", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "佐藤", name: "健太", age: "56", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "田中", name: "さくら", age: "24", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "渡辺", name: "三郎", age: "31", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "高橋", name: "りん", age: "45", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "伊藤", name: "四郎", age: "29", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "鈴木", name: "五郎", age: "30", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "", name: "", age: "", gender: "", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
   ];
   React.useEffect(() => {
     setbodyData(data);
   },[]);
 
   const getColumns = (): Column[] => [
-    { columnId: "surname", width: 150 },
-    { columnId: "name", width: 150 },
-    { columnId: "age", width: 150 },
-    { columnId: "gender", width: 150 },
-    { columnId: "birthDate", width: 150 },
-    { columnId: "checkFlg", width: 150 },
+    { columnId: "no", width: 75, resizable: true },
+    { columnId: "surname", resizable: true },
+    { columnId: "name" },
+    { columnId: "age" },
+    { columnId: "gender" },
+    { columnId: "birthDate" },
+    { columnId: "checkFlg" },
+    { columnId: "status" },
   ];
 
   const headerRow: Row = {
     rowId: "header",
     cells: [
+      { type: "header", text: "" },
       { type: "header", text: "姓" },
       { type: "header", text: "名" },
       { type: "header", text: "年齢" },
       { type: "header", text: "性別" },
       { type: "header", text: "生年月日" },
       { type: "header", text: "チェック" },
+      { type: "header", text: "状態" },
     ],
   };
 
+  const statusLists = [
+    { label: '活性', value: '活性' },
+    { label: '無活性', value: '無活性' },
+  ];
   const getRows = (people: Atom.sampleDataList[]): Row[] => [
     headerRow,
     ...people.map<Row>((person, idx) => ({
       rowId: idx,
       cells: [
+        { type: "number", value: idx },
         { type: "text", text: person.surname },
         { type: "text", text: person.name },
         { type: "text", text: person.age },
         { type: "text", text: person.gender },
         { type: "date", date: person.birthDate },
         { type: "checkbox", checked: person.checkFlg },
+        { type: "dropdown",　selectedValue: person.status, values: statusLists, isOpen: person.isOpen },
       ],
     })),
   ];
 
   const rows = getRows(bodyData);
-  const columns = getColumns();
+  const [columns, setColumns] = React.useState<Column[]>(getColumns());
+
+  console.log(rows);
+  
   
   const handleChanges = (changes: CellChange<any>[]) => { 
     //setbodyData((prevPeople) => applyChangesToPeople(changes, prevPeople));
@@ -84,6 +114,9 @@ function App() {
         let changedData = changes[0].newCell.text;
         if (columnIdx == "birthDate") {
           changedData = changes[0].newCell.date;
+        } else if (columnIdx == "status") {
+          changedData = changes[0].newCell.isOpen;
+          return { ...item, isOpen:  changedData};
         } else {
           changedData = changes[0].newCell.checked;
         }
@@ -95,6 +128,16 @@ function App() {
     console.log(newList);
     setbodyData(newList);
   }; 
+
+  const handleColumnResize = (ci: any, width: number) => {
+    setColumns((prevColumns) => {
+        const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
+        const resizedColumn = prevColumns[columnIndex];
+        const updatedColumn = { ...resizedColumn, width };
+        prevColumns[columnIndex] = updatedColumn;
+        return [...prevColumns];
+    });
+  };
 
   /** Handsontable */
   const HandsonData: any = [
@@ -129,7 +172,20 @@ function App() {
           <p>
             <a href="https://reactgrid.com/">ReactGrid</a> ※ 一番適当だと思います。
           </p>
-          <ReactGrid rows={rows} columns={columns} onCellsChanged={handleChanges} enableFillHandle enableRangeSelection />
+          <div className="react-grid-panel" style={{ width: "70vw", height: "60vh", overflow: "scroll" }}>
+            <ReactGrid 
+              rows={rows} 
+              columns={columns} 
+              onCellsChanged={handleChanges}
+              onColumnResized={handleColumnResize}
+              stickyLeftColumns={3}
+              stickyTopRows={1}
+              enableFillHandle 
+              enableRangeSelection
+              enableRowSelection
+              enableColumnSelection
+            />
+          </div>
         </div>
 
         {/* Handsontable */}

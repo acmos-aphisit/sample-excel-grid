@@ -45,8 +45,24 @@
   border: none !important;
 }
 
-.rg-text-cell, .rg-date-cell, .rg-checkbox-cell {
+/* ヘッダー */
+.rg-header-cell {
+  background-color: #d1d1d1 !important;
+}
+
+/* セル */
+.rg-text-cell, .rg-date-cell, .rg-checkbox-cell, .rg-dropdown-cell, .rg-number-cell {
   background-color: white !important;
+}
+
+.rg-number-cell {
+  justify-content: center !important;
+  background-color: #d1d1d1 !important;
+}
+
+.reactgrid-wrapper {
+  height: 100px !important;
+  overflow: scroll !important;
 }
 
 @keyframes App-logo-spin {
