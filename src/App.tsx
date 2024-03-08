@@ -24,7 +24,7 @@ function App() {
   const bodyData: Atom.sampleDataList[] = useRecoilValue(Atom.sampleListState);
   const setbodyData = useSetRecoilState(Atom.sampleListState);
   const data: Atom.sampleDataList[] = [
-    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1987-05-05"), birthDateStr: "", checkFlg: false, status: "活性", isOpen: false },
+    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1987-05-05"), birthDateStr: "", checkFlg: true, status: "活性", isOpen: false },
     { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "山本", name: "二郎", age: "19", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "山口", name: "花子", age: "28", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
@@ -34,8 +34,8 @@ function App() {
     { surname: "高橋", name: "りん", age: "45", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "伊藤", name: "四郎", age: "29", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "鈴木", name: "五郎", age: "30", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
-    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1974-12-31"), birthDateStr: "", checkFlg: false, status: "活性", isOpen: false },
-    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "無活性", isOpen: false },
+    { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1974-12-31"), birthDateStr: "", checkFlg: true, status: "活性", isOpen: false },
+    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: true, status: "無活性", isOpen: false },
     { surname: "山本", name: "二郎", age: "19", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "山口", name: "花子", age: "28", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "佐藤", name: "健太", age: "56", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
@@ -70,7 +70,7 @@ function App() {
       { type: "header", text: "年齢" },
       { type: "header", text: "性別" },
       { type: "header", text: "生年月日" },
-      { type: "header", text: "チェック" },
+      { type: "header", text: "編集可能" },
       { type: "header", text: "状態" },
     ],
   };
@@ -87,7 +87,7 @@ function App() {
         { type: "number", value: idx },
         { type: "text", text: person.surname },
         { type: "text", text: person.name },
-        { type: "text", text: person.age },
+        { type: "text", text: person.age, nonEditable: !person.checkFlg, className: !person.checkFlg ? "dataAge" : "" },
         { type: "text", text: person.gender },
         { type: "date", date: person.birthDate },
         { type: "checkbox", checked: person.checkFlg },
@@ -172,7 +172,7 @@ function App() {
           <p>
             <a href="https://reactgrid.com/">ReactGrid</a> ※ 一番適当だと思います。
           </p>
-          <div className="react-grid-panel" style={{ width: "70vw", height: "60vh", overflow: "scroll" }}>
+          <div className="react-grid-panel" style={{ width: "75vw", height: "60vh", overflow: "scroll" }}>
             <ReactGrid 
               rows={rows} 
               columns={columns} 
