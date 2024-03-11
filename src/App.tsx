@@ -25,7 +25,7 @@ function App() {
   const setbodyData = useSetRecoilState(Atom.sampleListState);
   const data: Atom.sampleDataList[] = [
     { surname: "日本", name: "太郎", age: "20", gender: "男性", birthDate: new Date("1987-05-05"), birthDateStr: "", checkFlg: true, status: "活性", isOpen: false },
-    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
+    { surname: "山田", name: "一郎", age: "35", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: true, status: "", isOpen: false },
     { surname: "山本", name: "二郎", age: "19", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "山口", name: "花子", age: "28", gender: "女性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
     { surname: "佐藤", name: "健太", age: "56", gender: "男性", birthDate: undefined, birthDateStr: "", checkFlg: false, status: "", isOpen: false },
@@ -51,8 +51,8 @@ function App() {
   },[]);
 
   const getColumns = (): Column[] => [
-    { columnId: "no", width: 75, resizable: true },
-    { columnId: "surname", resizable: true },
+    { columnId: "no", resizable: true, reorderable: true },
+    { columnId: "surname", resizable: true, reorderable: true },
     { columnId: "name" },
     { columnId: "age" },
     { columnId: "gender" },
@@ -89,7 +89,24 @@ function App() {
         { type: "text", text: person.name },
         { type: "text", text: person.age, nonEditable: !person.checkFlg, className: !person.checkFlg ? "dataAge" : "" },
         { type: "text", text: person.gender },
-        { type: "date", date: person.birthDate },
+        { type: "date", date: person.birthDate},
+        { type: "checkbox", checked: person.checkFlg },
+        { type: "dropdown",　selectedValue: person.status, values: statusLists, isOpen: person.isOpen },
+      ],
+    })),
+  ];
+
+  const getRows2 = (people: Atom.sampleDataList[]): Row[] => [
+    headerRow,
+    ...people.map<Row>((person, idx) => ({
+      rowId: idx,
+      cells: [
+        { type: "number", value: idx },
+        { type: "text", text: person.surname },
+        { type: "text", text: person.name },
+        { type: "text", text: person.age, nonEditable: !person.checkFlg, className: !person.checkFlg ? "dataAge" : "" },
+        { type: "text", text: person.gender },
+        { type: "date", date: person.birthDate},
         { type: "checkbox", checked: person.checkFlg },
         { type: "dropdown",　selectedValue: person.status, values: statusLists, isOpen: person.isOpen },
       ],
@@ -99,35 +116,57 @@ function App() {
   const rows = getRows(bodyData);
   const [columns, setColumns] = React.useState<Column[]>(getColumns());
 
-  console.log(rows);
-  
-  
   const handleChanges = (changes: CellChange<any>[]) => { 
     //setbodyData((prevPeople) => applyChangesToPeople(changes, prevPeople));
-    console.log(changes[0]);
+    console.log(changes);
 
-    const columnIdx = changes[0].columnId;
-    let newList = [...Object.values(bodyData)].map((item, key) => {
-      if (key === changes[0].rowId) {
-        // コラム名を指定
-        const updatedFieldName = `${columnIdx}`;
-        let changedData = changes[0].newCell.text;
-        if (columnIdx == "birthDate") {
-          changedData = changes[0].newCell.date;
-        } else if (columnIdx == "status") {
-          changedData = changes[0].newCell.isOpen;
-          return { ...item, isOpen:  changedData};
-        } else if (columnIdx == "checkFlg") {
-          changedData = changes[0].newCell.checked;
+    let newList = bodyData;
+    changes.forEach(changeItem => {
+      let columnIdx = changeItem.columnId;
+      
+      newList = [...Object.values(newList)].map((item, key) => {
+        if (key === changeItem.rowId) {
+          // コラム名を指定
+          let updatedFieldName = `${columnIdx}`;
+          let changedData = changeItem.newCell.text;
+          if (columnIdx == "birthDate") {
+            changedData = changeItem.newCell.date;
+          } else if (columnIdx == "status") {
+            const changedIsopen = changeItem.newCell.isOpen;
+            changedData = changeItem.newCell.text;
+            return { ...item, isOpen:  changedIsopen, status: changedData};
+          } else if (columnIdx == "checkFlg") {
+            changedData = changeItem.newCell.checked;
+          }
+          return { ...item, [updatedFieldName]:  changedData};
+        } else {
+          return item;
         }
-        return { ...item, [updatedFieldName]:  changedData};
-      } else {
-        return item;
-      }
+      });
+
+      console.log(newList);
+      
     });
-    console.log(newList);
+
+    
     setbodyData(newList);
-  }; 
+  };
+
+  const applyChangesToPeople = (
+    changes: CellChange<TextCell>[],
+    prevPeople: Atom.sampleDataList[]
+  ): Atom.sampleDataList[] => {
+    changes.forEach((change) => {
+      const personIndex:any = change.rowId;
+      const fieldName:any = change.columnId;
+      prevPeople[personIndex].surname = change.newCell.text;
+    });
+    return [...prevPeople];
+  };
+
+  const handleChanges2 = (changes: CellChange<any>[]) => {
+    setbodyData((prevPeople) => applyChangesToPeople(changes, prevPeople));
+  };
 
   const handleColumnResize = (ci: any, width: number) => {
     setColumns((prevColumns) => {
@@ -172,7 +211,7 @@ function App() {
           <p>
             <a href="https://reactgrid.com/">ReactGrid</a> ※ 一番適当だと思います。
           </p>
-          <div className="react-grid-panel" style={{ width: "75vw", height: "60vh", overflow: "scroll" }}>
+          <div className="react-grid-panel" style={{ width: "60vw", height: "50vh", overflow: "scroll" }}>
             <ReactGrid 
               rows={rows} 
               columns={columns} 
