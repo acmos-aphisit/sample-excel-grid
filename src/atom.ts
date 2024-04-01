@@ -2,8 +2,8 @@ import { atom } from 'recoil';
 
 // 一覧インターフェース
 export interface sampleDataList {
+    itemNo: string;
     name: string;
-    surname: string;
     age: string;
     gender: string;
     birthDate: Date | undefined;
@@ -14,7 +14,13 @@ export interface sampleDataList {
   }
   
   // 受給者一覧アトム
-  export const sampleListState = atom<sampleDataList[]>({
+  export const sampleListState = atom<any[]>({
     key: 'sampleDataListState',
     default: [],
   });
+
+// カラムアトム
+export const sampleColumnListState = atom<any[]>({
+  key: 'sampleColumnListState',
+  default: [],
+});
