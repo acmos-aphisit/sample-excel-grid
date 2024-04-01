@@ -65,8 +65,50 @@
   overflow: scroll !important;
 }
 
-.dataAge {
-  background-color: #d1d1d1 !important;
+.disabled-cell {
+  background-color: #e7e6e6 !important;
+  pointer-events: none !important;
+}
+
+.strip-bg-color {
+  background-color: rgb(184, 255, 255) !important;
+}
+
+.rg-cell.rg-select-cell {
+  padding: 0 0 !important;
+  background-color: white !important;
+}
+
+.rg-cell.rg-select-cell:has(.strip-bg-color) {
+  padding: 0 0 !important;
+  background-color: rgb(184, 255, 255) !important;
+}
+
+.rg-celleditor.rg-select-celleditor {
+  padding: 0 0;
+}
+
+.base-select {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+}
+
+.base-show-select {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  margin-left: 4px !important;
+  align-content: center !important;
+}
+
+.select-like-span {
+  display: inline-block;
+  padding: 4px 10px;
+  background-image: url('../public/dropdown.png');
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  background-size: 10px;
 }
 
 @keyframes App-logo-spin {
