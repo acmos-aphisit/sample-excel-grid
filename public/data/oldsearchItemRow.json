@@ -1,0 +1,1665 @@
+[
+  {
+    "itemNo": "1",
+    "name": "採水年月日",
+    "type": "date",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "2",
+    "name": "採水時刻",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "3",
+    "name": "データ管理区分",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "4",
+    "name": "検査区分",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "5",
+    "name": "採水者",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "6",
+    "name": "所属",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "7",
+    "name": "当日天候",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "8",
+    "name": "気温",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "9",
+    "name": "水温",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "10",
+    "name": "アンチモン及びその化合物",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "11",
+    "name": "ウラン及びその化合物",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "12",
+    "name": "ニッケル及びその化合物",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "13",
+    "name": "亜硝酸態窒素",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "14",
+    "name": "1,2-ジクロロエタン",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "15",
+    "name": "トランス1,2-ジクロロエチレン",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "16",
+    "name": "1,1,2-トリクロロエタン",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "17",
+    "name": "トルエン",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "18",
+    "name": "フタル酸ジ（2-エチルヘキシル）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "19",
+    "name": "亜塩素酸",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "20",
+    "name": "塩素酸",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "21",
+    "name": "二酸化塩素",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "22",
+    "name": "ジクロロアセトニトリル",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "23",
+    "name": "抱水クロラール",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "24",
+    "name": "農薬類（検出指標値）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "25",
+    "name": "残留塩素",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "26",
+    "name": "カルシウム、マグネシウム等（硬度）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "27",
+    "name": "マンガン及びその化合物",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "28",
+    "name": "遊離炭酸",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "29",
+    "name": "1,1,1-トリクロロエタン",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "30",
+    "name": "メチル-ｔ-ブチルエーテル",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "31",
+    "name": "KMnO4消費量",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "32",
+    "name": "臭気強度",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "33",
+    "name": "蒸発残留物",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "34",
+    "name": "濁度",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "35",
+    "name": "ｐＨ値",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "36",
+    "name": "腐食性（ランゲリア指数）",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "37",
+    "name": "従属栄養細菌（培養２日後）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "38",
+    "name": "従属栄養細菌（培養３日後）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "39",
+    "name": "従属栄養細菌（培養７日後）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "40",
+    "name": "従属栄養細菌（培養１４日後）",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "41",
+    "name": "1,1-ジクロロエチレン",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "42",
+    "name": "アルミニウム及びその化合物",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "43",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "44",
+    "name": "ペルフルオロオクタン酸(PFOA)",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "45",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)及びペルフルオロオクタン酸(PFOA)",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "46",
+    "name": "検査終了日",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "47",
+    "name": "検査機関",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "48",
+    "name": "検査責任者",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "49",
+    "name": "宛先",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "50",
+    "name": "＜文書番号＞",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "51",
+    "name": "＜発出日＞",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "52",
+    "name": "備考",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "53",
+    "name": "採水年月日-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "54",
+    "name": "採水時刻-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "55",
+    "name": "データ管理区分-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "56",
+    "name": "検査区分-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "57",
+    "name": "採水者-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "58",
+    "name": "所属-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "59",
+    "name": "当日天候-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "60",
+    "name": "気温-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "61",
+    "name": "水温-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "62",
+    "name": "アンチモン及びその化合物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "63",
+    "name": "ウラン及びその化合物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "64",
+    "name": "ニッケル及びその化合物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "65",
+    "name": "亜硝酸態窒素-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "66",
+    "name": "1,2-ジクロロエタン-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "67",
+    "name": "トランス1,2-ジクロロエチレン-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "68",
+    "name": "1,1,2-トリクロロエタン-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "69",
+    "name": "トルエン-サンプル２",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "70",
+    "name": "フタル酸ジ（2-エチルヘキシル）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "71",
+    "name": "亜塩素酸-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "72",
+    "name": "塩素酸-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "73",
+    "name": "二酸化塩素-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "74",
+    "name": "ジクロロアセトニトリル-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "75",
+    "name": "抱水クロラール-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "76",
+    "name": "農薬類（検出指標値）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "77",
+    "name": "残留塩素-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "78",
+    "name": "カルシウム、マグネシウム等（硬度）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "79",
+    "name": "マンガン及びその化合物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "80",
+    "name": "遊離炭酸-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "81",
+    "name": "1,1,1-トリクロロエタン-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "82",
+    "name": "メチル-ｔ-ブチルエーテル-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "83",
+    "name": "KMnO4消費量-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "84",
+    "name": "臭気強度-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "85",
+    "name": "蒸発残留物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "86",
+    "name": "濁度-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "87",
+    "name": "ｐＨ値-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "88",
+    "name": "腐食性（ランゲリア指数）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "89",
+    "name": "従属栄養細菌（培養２日後）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "90",
+    "name": "従属栄養細菌（培養３日後）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "91",
+    "name": "従属栄養細菌（培養７日後）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "92",
+    "name": "従属栄養細菌（培養１４日後）-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "93",
+    "name": "1,1-ジクロロエチレン-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "94",
+    "name": "アルミニウム及びその化合物-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "95",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "96",
+    "name": "ペルフルオロオクタン酸(PFOA)-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "97",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)及びペルフルオロオクタン酸(PFOA)-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "98",
+    "name": "検査終了日-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "99",
+    "name": "検査機関-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "100",
+    "name": "検査責任者-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "101",
+    "name": "宛先-サンプル２",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "102",
+    "name": "＜文書番号＞-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "103",
+    "name": "＜発出日＞-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "104",
+    "name": "備考-サンプル２",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "105",
+    "name": "採水年月日-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "106",
+    "name": "採水時刻-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "107",
+    "name": "データ管理区分-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "108",
+    "name": "検査区分-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "109",
+    "name": "採水者-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "110",
+    "name": "所属-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "111",
+    "name": "当日天候-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "112",
+    "name": "気温-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "113",
+    "name": "水温-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "114",
+    "name": "アンチモン及びその化合物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "115",
+    "name": "ウラン及びその化合物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "116",
+    "name": "ニッケル及びその化合物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "117",
+    "name": "亜硝酸態窒素-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "118",
+    "name": "1,2-ジクロロエタン-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "119",
+    "name": "トランス1,2-ジクロロエチレン-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "120",
+    "name": "1,1,2-トリクロロエタン-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "121",
+    "name": "トルエン-サンプル３",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "122",
+    "name": "フタル酸ジ（2-エチルヘキシル）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "123",
+    "name": "亜塩素酸-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "124",
+    "name": "塩素酸-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "125",
+    "name": "二酸化塩素-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "126",
+    "name": "ジクロロアセトニトリル-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "127",
+    "name": "抱水クロラール-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "128",
+    "name": "農薬類（検出指標値）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "129",
+    "name": "残留塩素-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "130",
+    "name": "カルシウム、マグネシウム等（硬度）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "131",
+    "name": "マンガン及びその化合物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "132",
+    "name": "遊離炭酸-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "133",
+    "name": "1,1,1-トリクロロエタン-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "134",
+    "name": "メチル-ｔ-ブチルエーテル-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "135",
+    "name": "KMnO4消費量-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "136",
+    "name": "臭気強度-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "137",
+    "name": "蒸発残留物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "138",
+    "name": "濁度-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "139",
+    "name": "ｐＨ値-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "140",
+    "name": "腐食性（ランゲリア指数）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "141",
+    "name": "従属栄養細菌（培養２日後）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "142",
+    "name": "従属栄養細菌（培養３日後）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "143",
+    "name": "従属栄養細菌（培養７日後）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "144",
+    "name": "従属栄養細菌（培養１４日後）-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "145",
+    "name": "1,1-ジクロロエチレン-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "146",
+    "name": "アルミニウム及びその化合物-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "147",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "148",
+    "name": "ペルフルオロオクタン酸(PFOA)-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "149",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)及びペルフルオロオクタン酸(PFOA)-サンプル３",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "150",
+    "name": "検査終了日-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "151",
+    "name": "検査機関-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "152",
+    "name": "検査責任者-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "153",
+    "name": "宛先-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "154",
+    "name": "＜文書番号＞-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "155",
+    "name": "＜発出日＞-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "156",
+    "name": "備考-サンプル３",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "157",
+    "name": "採水年月日-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "158",
+    "name": "採水時刻-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "159",
+    "name": "データ管理区分-サンプル４",
+    "type": "select",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "160",
+    "name": "検査区分-サンプル４",
+    "type": "select",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "161",
+    "name": "採水者-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "162",
+    "name": "所属-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "163",
+    "name": "当日天候-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "164",
+    "name": "気温-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "165",
+    "name": "水温-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "166",
+    "name": "アンチモン及びその化合物-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "167",
+    "name": "ウラン及びその化合物-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "168",
+    "name": "ニッケル及びその化合物-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "169",
+    "name": "亜硝酸態窒素-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "170",
+    "name": "1,2-ジクロロエタン-サンプル４",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "171",
+    "name": "トランス1,2-ジクロロエチレン-サンプル４",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "172",
+    "name": "1,1,2-トリクロロエタン-サンプル４",
+    "type": "select",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "173",
+    "name": "トルエン-サンプル４",
+    "type": "select",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "174",
+    "name": "フタル酸ジ（2-エチルヘキシル）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "175",
+    "name": "亜塩素酸-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "176",
+    "name": "塩素酸-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "177",
+    "name": "二酸化塩素-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "178",
+    "name": "ジクロロアセトニトリル-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "179",
+    "name": "抱水クロラール-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "180",
+    "name": "農薬類（検出指標値）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "181",
+    "name": "残留塩素-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "182",
+    "name": "カルシウム、マグネシウム等（硬度）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "183",
+    "name": "マンガン及びその化合物-サンプル４",
+    "type": "text",
+    "checkFlg": true,
+    "status": "活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "184",
+    "name": "遊離炭酸-サンプル４",
+    "type": "text",
+    "checkFlg": true,
+    "status": "無活性",
+    "isOpen": false
+  },
+  {
+    "itemNo": "185",
+    "name": "1,1,1-トリクロロエタン-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "186",
+    "name": "メチル-ｔ-ブチルエーテル-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "187",
+    "name": "KMnO4消費量-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "188",
+    "name": "臭気強度-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "189",
+    "name": "蒸発残留物-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "190",
+    "name": "濁度-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "191",
+    "name": "ｐＨ値-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "192",
+    "name": "腐食性（ランゲリア指数）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "193",
+    "name": "従属栄養細菌（培養２日後）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "194",
+    "name": "従属栄養細菌（培養３日後）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "195",
+    "name": "従属栄養細菌（培養７日後）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "196",
+    "name": "従属栄養細菌（培養１４日後）-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "197",
+    "name": "1,1-ジクロロエチレン-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "198",
+    "name": "アルミニウム及びその化合物-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "199",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "200",
+    "name": "ペルフルオロオクタン酸(PFOA)-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "201",
+    "name": "ペルフルオロオクタンスルホン酸(PFOS)及びペルフルオロオクタン酸(PFOA)-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "202",
+    "name": "検査終了日-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "203",
+    "name": "検査機関-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "204",
+    "name": "検査責任者-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "205",
+    "name": "宛先-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "206",
+    "name": "＜文書番号＞-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "207",
+    "name": "＜発出日＞-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  },
+  {
+    "itemNo": "208",
+    "name": "備考-サンプル４",
+    "type": "text",
+    "checkFlg": false,
+    "status": "",
+    "isOpen": false
+  }
+]
