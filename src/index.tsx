@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import AppView from './views/App';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
@@ -8,7 +9,7 @@ import { RecoilRoot } from 'recoil';
 ReactDOM.render(
   <React.Suspense >
     <RecoilRoot>
-      <App />
+      <AppView />
     </RecoilRoot>
   </React.Suspense>,
   document.getElementById('root'),

@@ -6,7 +6,7 @@ import * as Atom from "./atom";
 import { RecoilRoot } from "recoil";
 
 /** ReactGrid */
-import { ReactGrid, Column, Row, CellChange, TextCell, DefaultCellTypes, CellLocation, MenuOption, Id, SelectionMode } from "@silevis/reactgrid";
+import { ReactGrid, Column, Row, CellChange, TextCell, DefaultCellTypes, CellLocation, MenuOption, Id, SelectionMode, DropPosition } from "@silevis/reactgrid";
 import "@silevis/reactgrid/styles.css";
 import moment from "moment";
 
@@ -94,6 +94,11 @@ function App() {
             }
           });
         });
+        // データを変える時、変更履歴ステートに追加する
+        setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), data]);
+
+        // 変更回数を増やす
+        setCellChangesIndex(cellChangesIndex + 1);
         setbodyData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -188,41 +193,45 @@ function App() {
    * @param changes  ライブラリーのデータ変更値
    */
   const handleChanges = (changes: CellChange<any>[]) => {
-    let newList = bodyData;
-    changes.forEach((changeItem) => {
-      let columnIdx = changeItem.columnId;
-      let columnType = changeItem.type;
+    console.log("11111 :",changes);
+    
+    if (changes[0].newCell.text !== "*****") {
+      let newList = bodyData;
+      changes.forEach((changeItem) => {
+        let columnIdx = changeItem.columnId;
+        let columnType = changeItem.type;
 
-      newList = [...Object.values(newList)].map((item, key) => {
-        if (key === changeItem.rowId) {
-          // コラム名を指定
-          let updatedFieldName = `${columnIdx}`;
-          let changedData = changeItem.newCell.text;
+        newList = [...Object.values(newList)].map((item, key) => {
+          if (key === changeItem.rowId) {
+            // コラム名を指定
+            let updatedFieldName = `${columnIdx}`;
+            let changedData = changeItem.newCell.text;
 
-          if (columnType == "date") {
-            changedData = changeItem.newCell.date;
-          } else if (columnType == "select") {
-            /** 別のコンポネントに処理する */
-            // const changedIsopen = changeItem.newCell.isOpen;
-            // changedData = changeItem.newCell.text;
-            // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
-          } else if (columnType == "checkbox") {
-            changedData = changeItem.newCell.checked;
+            if (columnType == "date") {
+              changedData = changeItem.newCell.date;
+            } else if (columnType == "select") {
+              /** 別のコンポネントに処理する */
+              // const changedIsopen = changeItem.newCell.isOpen;
+              // changedData = changeItem.newCell.text;
+              // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
+            } else if (columnType == "checkbox") {
+              changedData = changeItem.newCell.checked;
+            }
+            return { ...item, [updatedFieldName]: changedData };
+          } else {
+            return item;
           }
-          return { ...item, [updatedFieldName]: changedData };
-        } else {
-          return item;
-        }
+        });
       });
-    });
-    // データを変える時、変更履歴ステートに追加する
-    setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), changes]);
+      // データを変える時、変更履歴ステートに追加する
+      setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), newList]);
 
-    // 変更回数を増やす
-    setCellChangesIndex(cellChangesIndex + 1);
+      // 変更回数を増やす
+      setCellChangesIndex(cellChangesIndex + 1);
 
-    // 一覧表の情報 (body) を設定
-    setbodyData(newList);
+      // 一覧表の情報 (body) を設定
+      setbodyData(newList);
+    }
   };
 
   /**
@@ -230,7 +239,8 @@ function App() {
    *
    */
   React.useEffect(() => {
-    console.log(cellChanges);
+    console.log("cellChangesIndex", cellChangesIndex);
+    console.log("cellChanges", cellChanges);
     setRows(getRows(bodyData));
   }, [bodyData]);
 
@@ -284,40 +294,61 @@ function App() {
     const checkMask = (selectedRanges[0]) ? bodyData[rowId][columnId] : null;
   
     // 情報マスク処理
-    menuOptions = [
-      ...menuOptions,
-      {
-        id: "mask",
-        label: checkMask ? "マスク解除" : "マスク",
-        handler: () => {
-          let newList = bodyData;
-          let setChange: any = [];
-          selectedRanges[0].forEach((item) => {
-            const getRow: any = item.rowId;
-            const getcolumnId: any = `${item.columnId}Disable`;
-
-            newList = [...Object.values(newList)].map((item, key) => {
-              if (key == getRow) {
-                return { ...item, [getcolumnId]: !checkMask };
-              } else {
-                return item;
-              }
+    if (checkMask) {
+      menuOptions = [
+        {
+          id: "mask",
+          label: "マスク解除",
+          handler: () => {
+            let newList = bodyData;
+            selectedRanges[0].forEach((item) => {
+              const getRow: any = item.rowId;
+              const getcolumnId: any = `${item.columnId}Disable`;
+  
+              newList = [...Object.values(newList)].map((item, key) => {
+                if (key == getRow) {
+                  return { ...item, [getcolumnId]: !checkMask };
+                } else {
+                  return item;
+                }
+              });
             });
-
-            setChange.push({
-              columnId: item.columnId,
-              rowId: item.rowId,
-              previousCell: !checkMask,
-              type: "mask"
-            });
-          });
-
-          setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChange]);
-          setCellChangesIndex(cellChangesIndex + 1);
-          setbodyData(newList);
+  
+            setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), newList]);
+            setCellChangesIndex(cellChangesIndex + 1);
+            setbodyData(newList);
+          },
         },
-      },
-    ];
+      ];
+    } else {
+      menuOptions = [
+        ...menuOptions,
+        {
+          id: "mask",
+          label: "マスク",
+          handler: () => {
+            let newList = bodyData;
+            selectedRanges[0].forEach((item) => {
+              const getRow: any = item.rowId;
+              const getcolumnId: any = `${item.columnId}Disable`;
+  
+              newList = [...Object.values(newList)].map((item, key) => {
+                if (key == getRow) {
+                  return { ...item, [getcolumnId]: !checkMask };
+                } else {
+                  return item;
+                }
+              });
+            });
+  
+            setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), newList]);
+            setCellChangesIndex(cellChangesIndex + 1);
+            setbodyData(newList);
+          },
+        },
+      ];
+    }
+
     return menuOptions;
   };
 
@@ -326,40 +357,42 @@ function App() {
    * 
    */
   const handleUndoChanges = () => {
-    if (cellChangesIndex >= 0) {
-      let newList = bodyData;
-      cellChanges[cellChangesIndex].forEach((changeItem) => {
-        let columnIdx = changeItem.columnId;
-        let columnType = changeItem.type;     
+    if (cellChangesIndex > 0) {
+      console.log(cellChanges);
+      
+      // let newList = bodyData;
+      // cellChanges[cellChangesIndex].forEach((changeItem) => {
+      //   let columnIdx = changeItem.columnId;
+      //   let columnType = changeItem.type;     
 
-        newList = [...Object.values(newList)].map((item, key) => {
-          if (key === changeItem.rowId) {
-            // コラム名を指定
-            let updatedFieldName = `${columnIdx}`;
-            let changedData = columnType == "mask" ? null : changeItem.previousCell.text;
+      //   newList = [...Object.values(newList)].map((item, key) => {
+      //     if (key === changeItem.rowId) {
+      //       // コラム名を指定
+      //       let updatedFieldName = `${columnIdx}`;
+      //       let changedData = columnType == "mask" ? null : changeItem.previousCell.text;
 
-            if (columnType == "date") {
-              changedData = changeItem.previousCell.date;
-            } else if (columnType == "select") {
-              /** 別のコンポネントに処理する */
-              // const changedIsopen = changeItem.newCell.isOpen;
-              // changedData = changeItem.newCell.text;
-              // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
-            } else if (columnType == "checkbox") {
-              changedData = changeItem.previousCell.checked;
-            } else if (columnType == "mask") {
-              const getcolumnId: any = `${changeItem.columnId}Disable`;
-              return { ...item, [getcolumnId]: !changeItem.previousCell };
-            }
+      //       if (columnType == "date") {
+      //         changedData = changeItem.previousCell.date;
+      //       } else if (columnType == "select") {
+      //         /** 別のコンポネントに処理する */
+      //         // const changedIsopen = changeItem.newCell.isOpen;
+      //         // changedData = changeItem.newCell.text;
+      //         // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
+      //       } else if (columnType == "checkbox") {
+      //         changedData = changeItem.previousCell.checked;
+      //       } else if (columnType == "mask") {
+      //         const getcolumnId: any = `${changeItem.columnId}Disable`;
+      //         return { ...item, [getcolumnId]: !changeItem.previousCell };
+      //       }
 
-            return { ...item, [updatedFieldName]: changedData };
-          } else {
-            return item;
-          }
-        });
-      });
+      //       return { ...item, [updatedFieldName]: changedData };
+      //     } else {
+      //       return item;
+      //     }
+      //   });
+      // });
       setCellChangesIndex(cellChangesIndex - 1);
-      setbodyData(newList);
+      setbodyData(cellChanges[cellChangesIndex - 1]);
     }
   };
 
@@ -367,41 +400,41 @@ function App() {
    * やり直す（ctrl + y）
    * 
    */
-  const handleRedoChanges = () => {
+  const handleRedoChanges = () => {   
     if (cellChangesIndex + 1 <= cellChanges.length - 1) {
-      let newList = bodyData;
-      cellChanges[cellChangesIndex + 1].forEach((changeItem) => {
-        let columnIdx = changeItem.columnId;
-        let columnType = changeItem.type;
+      // let newList = bodyData;
+      // cellChanges[cellChangesIndex + 1].forEach((changeItem) => {
+      //   let columnIdx = changeItem.columnId;
+      //   let columnType = changeItem.type;
 
-        newList = [...Object.values(newList)].map((item, key) => {
-          if (key === changeItem.rowId) {
-            // コラム名を指定
-            let updatedFieldName = `${columnIdx}`;
-            let changedData = columnType == "mask" ? null : changeItem.newCell.text;
+      //   newList = [...Object.values(newList)].map((item, key) => {
+      //     if (key === changeItem.rowId) {
+      //       // コラム名を指定
+      //       let updatedFieldName = `${columnIdx}`;
+      //       let changedData = columnType == "mask" ? null : changeItem.newCell.text;
 
-            if (columnType == "date") {
-              changedData = changeItem.newCell.date;
-            } else if (columnType == "select") {
-              /** 別のコンポネントに処理する */
-              // const changedIsopen = changeItem.newCell.isOpen;
-              // changedData = changeItem.newCell.text;
-              // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
-            } else if (columnType == "checkbox") {
-              changedData = changeItem.newCell.checked;
-            } else if (columnType == "mask") {
-              const getcolumnId: any = `${changeItem.columnId}Disable`;
-              return { ...item, [getcolumnId]: changeItem.previousCell };
-            }
+      //       if (columnType == "date") {
+      //         changedData = changeItem.newCell.date;
+      //       } else if (columnType == "select") {
+      //         /** 別のコンポネントに処理する */
+      //         // const changedIsopen = changeItem.newCell.isOpen;
+      //         // changedData = changeItem.newCell.text;
+      //         // return { ...item, [updatedFieldName + "IsOpen"]:  changedIsopen, [updatedFieldName]: changedData};
+      //       } else if (columnType == "checkbox") {
+      //         changedData = changeItem.newCell.checked;
+      //       } else if (columnType == "mask") {
+      //         const getcolumnId: any = `${changeItem.columnId}Disable`;
+      //         return { ...item, [getcolumnId]: changeItem.previousCell };
+      //       }
 
-            return { ...item, [updatedFieldName]: changedData };
-          } else {
-            return item;
-          }
-        });
-      });
+      //       return { ...item, [updatedFieldName]: changedData };
+      //     } else {
+      //       return item;
+      //     }
+      //   });
+      // });
       setCellChangesIndex(cellChangesIndex + 1);
-      setbodyData(newList);
+      setbodyData(cellChanges[cellChangesIndex + 1]);
     }
   };
 
@@ -441,6 +474,21 @@ function App() {
   const handleRowsReorder  = (targetRowId: Id, rowIds: Id[]) => {
     console.log("targetRowId : ", targetRowId);
     console.log("rowIds : ", rowIds);
+
+    
+    
+    const to = bodyData.findIndex((person, key) => key === targetRowId);
+    const rowsIds = rowIds.map((id) => bodyData.findIndex((person, key) => key === id));
+    console.log("to : " , to);
+    console.log("rowsIds : " , rowsIds);
+    console.log("Re-order : ", reorderArray(bodyData, rowsIds, to));
+    let newList = reorderArray(bodyData, rowsIds, to);
+    // データを変える時、変更履歴ステートに追加する
+    setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), newList]);
+
+    // 変更回数を増やす
+    setCellChangesIndex(cellChangesIndex + 1);
+    setbodyData(newList);
   }
 
   /**
@@ -449,9 +497,7 @@ function App() {
    * @param rowIds 
    * @returns 
    */
-  const handleCanReorderRows = (targetRowId: Id, rowIds: Id[]): boolean => {
-    console.log("targetRowId : ", targetRowId);
-    console.log("rowIds : ", rowIds);
+  const handleCanReorderRows = (targetRowId: Id, rowIds: Id[], dropPosition: DropPosition): boolean => {
     return targetRowId !== 'header';
   }
 
@@ -510,7 +556,7 @@ function App() {
               customCellTemplates={{ select: new SelectCellTemplate() }}
               onColumnsReordered={handleColumnsReorder}
               onRowsReordered={handleRowsReorder}
-              //canReorderRows={handleCanReorderRows}
+              canReorderRows={handleCanReorderRows}
               stickyLeftColumns={1}
               stickyTopRows={1}
               enableFillHandle
