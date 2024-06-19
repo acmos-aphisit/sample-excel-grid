@@ -24,3 +24,15 @@ export const sampleColumnListState = atom<any[]>({
   key: 'sampleColumnListState',
   default: [],
 });
+
+// 列数
+export const dataNumbersState = atom<any>({
+  key: 'dataNumbersState',
+  default: 31,
+});
+
+// 日付
+export const dataDateState = atom<Date>({
+  key: 'dataDateState',
+  default: undefined,
+});

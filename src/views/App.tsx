@@ -21,6 +21,14 @@ function App() {
   const columnData: any[] = useRecoilValue(Atom.sampleColumnListState); // カラム名（例：利根川取水口、木原取水場、南椎尾調整池 等）
   const setColumnData = useSetRecoilState(Atom.sampleColumnListState);  // カラム名指定 
 
+
+  const dataNumbersState = useRecoilValue(Atom.dataNumbersState); //　
+  const setDataNumbersState = useSetRecoilState(Atom.dataNumbersState);  //　
+
+
+  const dataDateState = useRecoilValue(Atom.dataDateState); //　
+  const setDataDateState = useSetRecoilState(Atom.dataDateState);  //　
+
   /** カラムヘッダ設定 */
   interface ColumnSetting {
     columnId: string;
@@ -44,8 +52,8 @@ function App() {
   const [focusInfo, setFocusInfo] = React.useState<any>();
 
   /** セレクトボックスの項目を作成 */
-  const listNo: number = 20;
-  let statusLists: [{label: String, value: String}] = [{ label: "", value: "" }];
+  const listNo: number = 31;
+  let statusLists: [{ label: String, value: String }] = [{ label: "", value: "" }];
   for (let index = 1; index <= listNo; index++) {
     statusLists.push({ label: `サンプル ${index}`, value: `サンプル ${index}` });
   }
@@ -53,89 +61,96 @@ function App() {
   /** 初期表示 */
   React.useEffect(() => {
     /** カラム作成（縦） */
-    let newColumn: {dataNo: Number, dataId: String, dataName: String, dataKey: Number}[] = [];
+    let newColumn: { dataNo: Number, dataId: String, dataName: String, dataKey: Number }[] = [];
+    if (dataNumbersState > 0) {
+      /**　データ指定（横）  */
+      const fetchData = async () => {
+        try {
+          // (1)
+          /** 各カラムの情報（ヘッダー） */
+          const columnResponse = await fetch("/data/firstColumnTitles.json");
+          let columnData = await columnResponse.json();
 
-    /**　データ指定（横）  */
-    const fetchData = async () => {
-      try {
-        /** 各カラムの情報（ヘッダー） */
-        const columnResponse = await fetch("/data/searchItemRow.json");
-        let columnData = await columnResponse.json();
+          /**
+           * タイトル（列）を生成
+           * 
+           */
+          for (let index = 0; index < dataNumbersState; index++) {
+            newColumn.push({ dataNo: index + 1, dataId: "dataNo" + (index + 1), dataName: columnData[index].searchItem, dataKey: index });
+          }
+          setColumnData(newColumn);
 
-        for (let index = 0; index < 20; index++) {
-          newColumn.push({ dataNo: index + 1, dataId: "dataNo" + (index + 1), dataName: columnData[index].searchItem, dataKey: index });
-        }
-        setColumnData(newColumn);
+          // (2)
+          /** 一覧表の情報（body） */
+          const response = await fetch("/data/oldsearchItemRow.json");
+          let data = await response.json();
+          data.forEach((item: any) => {
+            item.data = [];
+            newColumn.forEach((column: any, key: number) => {
+              let newObj = `data`;
+              let newIsOpenObj = `dataIsOpen`;
+              let newOrderObj = `dataOrder`;
+              item.data[key] = {};
+              item.data[key][newIsOpenObj] = false;
+              item.data[key][newOrderObj] = key;
 
-        /** 一覧表の情報（body） */
-        const response = await fetch("/data/oldsearchItemRow.json");
-        let data = await response.json();
-        data.forEach((item: any) => {
-          item.data = [];
-          newColumn.forEach((column: any, key: number) => {
-            let newObj = `data`;
-            let newIsOpenObj = `dataIsOpen`;
-            let newOrderObj = `dataOrder`;
-            item.data[key] = {};
-            item.data[key][newIsOpenObj] = false;
-            item.data[key][newOrderObj] = key;
+              // 無活性
+              let newDisableObj = `dataDisable`;
+              item.data[key][newDisableObj] = false;
 
-            // 無活性
-            let newDisableObj = `dataDisable`;
-            item.data[key][newDisableObj] = false;
-
-            // マスクデータ
-            let newMaskObj = `dataMask`;
-            item.data[key][newMaskObj] = "";
+              // マスクデータ
+              let newMaskObj = `dataMask`;
+              item.data[key][newMaskObj] = "";
 
 
-            switch (item.type) {
-              case "text":
-                item.data[key][newObj] = `${item.name}： ${column.dataNo}`;
-                if (item.name.match(/採水者/) && column.dataNo > 1) {
-                  item.data[key][newDisableObj] = true;
-                  item.data[key][newMaskObj] = "*****";
-                } else if (item.name.match(/ニッケル及びその化合物/)) {
-                  item.data[key][newDisableObj] = true;
-                  item.data[key][newMaskObj] = "*****";
-                } else if (item.name.match(/ウラン及びその化合物/) && column.dataNo % 2 == 0) {
-                  item.data[key][newDisableObj] = true;
-                  item.data[key][newMaskObj] = "*****";
-                }
-                break;
-              case "select":
-                item.data[key][newObj] = statusLists[Math.floor(Math.random() * listNo)].value;
-                break;
-              case "date":
-                item.data[key][newObj] = new Date(`2024-03-${key + 1}`);
-                break;
-              default:
-                break;
-            }
+              switch (item.type) {
+                case "text":
+                  item.data[key][newObj] = `${item.name}： ${column.dataNo}`;
+                  if (item.name.match(/採水者/) && column.dataNo > 1) {
+                    item.data[key][newDisableObj] = true;
+                    item.data[key][newMaskObj] = "*****";
+                  } else if (item.name.match(/ニッケル及びその化合物/)) {
+                    item.data[key][newDisableObj] = true;
+                    item.data[key][newMaskObj] = "*****";
+                  } else if (item.name.match(/ウラン及びその化合物/) && column.dataNo % 2 == 0) {
+                    item.data[key][newDisableObj] = true;
+                    item.data[key][newMaskObj] = "*****";
+                  }
+                  break;
+                case "select":
+                  item.data[key][newObj] = statusLists[Math.floor(Math.random() * listNo)].value;
+                  break;
+                case "date":
+                  item.data[key][newObj] = dataDateState;
+                  break;
+                default:
+                  break;
+              }
+            });
           });
-        });
-        
-        // データを変える時、変更履歴ステートに追加する
-        const setChangeData: any = [data, newColumn]
-        setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChangeData]);
 
-        // 変更回数を増やす
-        setCellChangesIndex(cellChangesIndex + 1);
-        setbodyData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+          // データを変える時、変更履歴ステートに追加する
+          const setChangeData: any = [data, newColumn]
+          setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChangeData]);
+
+          // 変更回数を増やす
+          setCellChangesIndex(cellChangesIndex + 1);
+          setbodyData(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchData();
+    }
+  }, [dataDateState]);
 
   /** カラムが変わる時 */
-  
+
   React.useEffect(() => {
-    let setColumnObj: ColumnSetting[] = [{ columnId: "name", columnType: "text", width: (columnSetting.length  > 0) ? columnSetting[0].width : 300, reorderable: false, resizable: true }];
+    let setColumnObj: ColumnSetting[] = [{ columnId: "name", columnType: "text", width: (columnSetting.length > 0) ? columnSetting[0].width : 300, reorderable: false, resizable: true }];
     let setHeaderObj: HeaderInfo[] = [{ type: "header", text: "" }];
 
-    columnData.forEach((columnItem: {dataKey: string, dataName: string}) => {
+    columnData.forEach((columnItem: { dataKey: string, dataName: string }) => {
       setColumnObj.push({ columnId: columnItem.dataKey, columnType: "text", width: 150, reorderable: true, resizable: false });
       setHeaderObj.push({ type: "header", text: columnItem.dataName });
     });
@@ -148,7 +163,7 @@ function App() {
     let roughObjSize = JSON.stringify(cellChanges);
 
     console.log("Objet Size : ", roughObjSize);
-    
+
   }, [bodyData, columnData]);
 
   /** 一覧表の情報 (body) を設定 */
@@ -160,9 +175,9 @@ function App() {
     ...bodyData.map<Row>((dataItem, idx) => ({
       rowId: idx,
       reorderable: true,
-      cells: columnSetting.map((cell: {columnId: string}, key: number) => {
+      cells: columnSetting.map((cell: { columnId: string }, key: number) => {
         var ret: any = new Object();
-       
+
         /** 入力：テキスト */
         //if (cell.columnType == "text") { 
         if (cell.columnId == "name") {
@@ -238,25 +253,25 @@ function App() {
             } else if (columnType == "checkbox") {
               //changedData = changeItem.newCell.checked;
             }
-              return {
-                ...item,
-                data: item.data.map((innerItem: any, innerIndex: any) => {
-                  if (innerIndex == dataKey) {
-                    return { ...innerItem, data: changedData };
-                  } else {
-                    return innerItem;
-                  }
-                })
-              };
-            } else {
-              return item;
-            }
+            return {
+              ...item,
+              data: item.data.map((innerItem: any, innerIndex: any) => {
+                if (innerIndex == dataKey) {
+                  return { ...innerItem, data: changedData };
+                } else {
+                  return innerItem;
+                }
+              })
+            };
+          } else {
+            return item;
+          }
         });
       });
       // データを変える時、変更履歴ステートに追加する
       const setChangeData: any = [newList, columnData]
       setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChangeData]);
-      
+
 
       // 変更回数を増やす
       setCellChangesIndex(cellChangesIndex + 1);
@@ -275,7 +290,7 @@ function App() {
   //   const divToClick = document.querySelector(`.rg-header-cell[data-cell-colidx="1"][data-cell-rowidx="0"]`) as HTMLElement;
   //   if (divToClick) {
   //     console.log("CLICK", divToClick);
-      
+
   //     divToClick.click();
   //   }
   // }, []);
@@ -323,7 +338,7 @@ function App() {
   const simpleHandleContextMenu = (selectedRowIds: Id[], selectedColIds: Id[], selectionMode: SelectionMode, menuOptions: MenuOption[], selectedRanges: Array<CellLocation[]>): MenuOption[] => {
     if (selectedRanges[0]) {
       // 行の項目名を選択する時、行項目を取り外す
-      if (selectedRanges[0]["0"].columnId == "name" || ((Object.keys(selectedRanges[0]).length - 1) == Object.keys(bodyData).length)) {       
+      if (selectedRanges[0]["0"].columnId == "name" || ((Object.keys(selectedRanges[0]).length - 1) == Object.keys(bodyData).length)) {
         selectedRanges[0].shift();
       }
 
@@ -363,7 +378,7 @@ function App() {
                 }
               });
             });
-  
+
             const setChangeData: any = [newList, columnData]
             setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChangeData]);
             setCellChangesIndex(cellChangesIndex + 1);
@@ -398,7 +413,7 @@ function App() {
                 }
               });
             });
-  
+
             const setChangeData: any = [newList, columnData]
             setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), setChangeData]);
             setCellChangesIndex(cellChangesIndex + 1);
@@ -450,10 +465,10 @@ function App() {
       // });
       const getData: any = cellChanges[cellChangesIndex - 1]['0'];
       const getColumn: any = cellChanges[cellChangesIndex - 1]['1'];
-      
+
       setColumnData(getColumn);
       setbodyData(getData);
-      
+
       setCellChangesIndex(cellChangesIndex - 1);
     }
   };
@@ -462,7 +477,7 @@ function App() {
    * やり直す（ctrl + y）
    * 
    */
-  const handleRedoChanges = () => {   
+  const handleRedoChanges = () => {
     if (cellChangesIndex + 1 <= cellChanges.length - 1) {
       // let newList = bodyData;
       // cellChanges[cellChangesIndex + 1].forEach((changeItem) => {
@@ -497,7 +512,7 @@ function App() {
       // });
       const getData: any = cellChanges[cellChangesIndex + 1]['0'];
       const getColumn: any = cellChanges[cellChangesIndex + 1]['1'];
-      
+
       setbodyData(getData);
       setColumnData(getColumn);
 
@@ -529,11 +544,11 @@ function App() {
     //console.log("headerSt : ", headerSt);
     // Main Change
     //console.log("columnData : ", columnData);
-    
+
     const to = columnData.findIndex((item, key) => key === targetColumnId);
     const rowsIds = columnIds.map((id) => columnData.findIndex((rowItem, rowKey) => rowKey === id));
-    console.log("to : " , to);
-    console.log("rowsIds : " , rowsIds);
+    console.log("to : ", to);
+    console.log("rowsIds : ", rowsIds);
     console.log("Re-order : ", reorderArray(columnData, rowsIds, to));
     let newColumn = reorderArray(columnData, rowsIds, to);
     newColumn = [...Object.values(newColumn)].map((newItem, newKey) => {
@@ -545,7 +560,7 @@ function App() {
 
     // row data
     let newList = bodyData;
-    newList = newList.map((rowItem:any, rowKey: any) => {
+    newList = newList.map((rowItem: any, rowKey: any) => {
       return {
         ...rowItem,
         data: reorderArray(rowItem.data, rowsIds, to)
@@ -558,10 +573,10 @@ function App() {
 
     // 変更回数を増やす
     setCellChangesIndex(cellChangesIndex + 1);
-    
+
     setColumnData(newColumn);
     setbodyData(newList);
-    setFocusInfo({rowId: 0, columnId: to});
+    setFocusInfo({ rowId: 0, columnId: to });
   }
 
   /**
@@ -569,14 +584,14 @@ function App() {
    * @param targetRowId 
    * @param rowIds 
    */
-  const handleRowsReorder  = (targetRowId: Id, rowIds: Id[]) => {
+  const handleRowsReorder = (targetRowId: Id, rowIds: Id[]) => {
     console.log("targetRowId : ", targetRowId);
     console.log("rowIds : ", rowIds);
 
     const to = bodyData.findIndex((person, key) => key === targetRowId);
     const rowsIds = rowIds.map((id) => bodyData.findIndex((person, key) => key === id));
-    console.log("to : " , to);
-    console.log("rowsIds : " , rowsIds);
+    console.log("to : ", to);
+    console.log("rowsIds : ", rowsIds);
     console.log("Re-order : ", reorderArray(bodyData, rowsIds, to));
     let newList = reorderArray(bodyData, rowsIds, to);
     // データを変える時、変更履歴ステートに追加する
@@ -618,6 +633,65 @@ function App() {
     }
   };
 
+  type DateSelection = {
+    title: string;
+    selectDate: Date | undefined;
+  };
+
+  const getInitDate = (): DateSelection[] => [
+    { title: "時刻=", selectDate: undefined },
+  ];
+
+  const getColumnsDate = (): Column[] => [
+    { columnId: "title", width: 0 },
+    { columnId: "selectDate", width: 0 }
+  ];
+
+  const headerRowDate: Row = {
+    rowId: "header",
+    cells: [
+      { type: "header", text: "" },
+      { type: "header", text: "" },
+    ]
+  };
+
+  const getRowsDate = (people: DateSelection[]): Row[] => [
+    headerRowDate,
+    ...people.map<Row>((person, idx) => ({
+      rowId: idx,
+      cells: [
+        { type: "text", text: person.title },
+        { type: "date", date: person.selectDate }
+      ]
+    }))
+  ];
+
+  const applyChangesDate = (
+    changes: CellChange<any>[],
+    prevPeople: DateSelection[]
+  ): DateSelection[] => {
+    changes.forEach((change) => {
+      const dateStr = change.newCell.text;
+      const dateArray = dateStr.split('/').map(Number);
+      setDataNumbersState(dateArray[2]);
+      setDataDateState(change.newCell.date);
+
+      const dateIndex = change.rowId;
+      const fieldName = change.columnId;
+      prevPeople[dateIndex][fieldName] = change.newCell.date;
+    });
+    return [...prevPeople];
+  };
+
+  const [dateState, setDateState] = React.useState<DateSelection[]>(getInitDate());
+
+  const rowsGridDate = getRowsDate(dateState);
+  const columnsGridDate = getColumnsDate();
+
+  const handleChangeDate = (changes: CellChange<any>[]) => {
+    setDateState((prevPeople) => applyChangesDate(changes, prevPeople));
+  };
+
   return (
     <>
       <div className="excel-grid-sample">
@@ -627,6 +701,14 @@ function App() {
 
         {/* ReactGrid */}
         <div className="sample-panel">
+          <div id="dateChanger" style={{ marginBottom: 15 }}>
+            <ReactGrid
+              rows={rowsGridDate}
+              columns={columnsGridDate}
+              onCellsChanged={handleChangeDate}
+            />
+
+          </div>
           <div
             className="react-grid-panel"
             style={{ width: "90vw", height: "70vh", overflow: "scroll", fontSize: "10pt" }}
@@ -644,7 +726,7 @@ function App() {
             }}
             onClick={() => { setFocusInfo(null); }}
           >
-            <ReactGrid 
+            <ReactGrid
               rows={rows}
               columns={columnSetting}
               labels={customLabels}
