@@ -1567,7 +1567,7 @@ option:disabled {
   }
 
   &:checked {
-    background-color: #4d5fb1 !important;
+    background-color: #4db196 !important;
     background-image: url("/img/check-icon.png");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -1628,7 +1628,7 @@ option:disabled {
 // 報告書出力
 #grid-simple-table {
   .rg-cell.rg-header-cell {
-    background-color: #4d5fb1 !important;
+    background-color: #4db196 !important;
     color: $color_white !important;
   }
 
@@ -1699,7 +1699,7 @@ option:disabled {
 // 採水地点設定画面
 #simple-grid-context-table {
   .rg-cell.rg-header-cell {
-    background-color: #4d5fb1 !important;
+    background-color: #4db196 !important;
     color: $color_white !important;
   }
 
@@ -2210,7 +2210,7 @@ $text-muted: #64748b;
 // 入力画面設定
 #MNG050-config-grid-table {
   .rg-cell.rg-header-cell {
-    background-color: #4d5fb1 !important;
+    background-color: #4db196 !important;
     color: $color_white !important;
   }
 

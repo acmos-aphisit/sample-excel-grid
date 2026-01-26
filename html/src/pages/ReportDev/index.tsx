@@ -54,7 +54,7 @@ const ReportDev = (): JSX.Element => {
             title="霞ヶ浦水源農薬類検査結果表.xlsx"
             width="400px"
             height="42px"
-            color="#4d5fb1"
+            color="#4db196"
             onClick={() => {
               // 受け渡しパラメータ
               //const params = [{}, {}, {}];

@@ -66,7 +66,7 @@ const CMN090 = (): JSX.Element => {
                   title="移行"
                   width="100px"
                   height="42px"
-                  color="#4d5fb1"
+                  color="#4db196"
                   onClick={() => {
                     migrateCsvToDb();
                   }}

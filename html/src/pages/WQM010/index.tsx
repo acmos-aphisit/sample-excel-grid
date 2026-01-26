@@ -544,7 +544,7 @@ const WQM010Footer = ({ sideMenuState, commonState, menuCalendarState, inputRegi
                     dataTestId="wqm010-4-2-6"
                     title="確定"
                     width="100px"
-                    color="#4d5fb1"
+                    color="#4db196"
                     margin="0px 0px 0px 15px"
                     className="footer_btn_right"
                     onClick={() => {
@@ -601,7 +601,7 @@ const WQM010Footer = ({ sideMenuState, commonState, menuCalendarState, inputRegi
             dataTestId="wqm010-4-2-4"
             title="Excelファイル取込"
             width="150px"
-            color="#4d5fb1"
+            color="#4db196"
             margin="0px 0px 0px 15px"
             className="footer_btn_right"
             disabled={!gridTableState.useInputFixedFlg}
@@ -627,7 +627,7 @@ const WQM010Footer = ({ sideMenuState, commonState, menuCalendarState, inputRegi
             dataTestId="wqm010-4-2-3"
             title="トレンド"
             width="100px"
-            color="#4d5fb1"
+            color="#4db196"
             className="footer_btn_right"
             disabled={!gridTableState.useInputFixedFlg}
             onClick={() => {
