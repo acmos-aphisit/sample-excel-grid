@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|ico|gif|jpg|png|css|swf|html|txt|svg|pdf|ttf|json|rdlx-json|mp4)$ index.html
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+AddType image/svg+xml .svg
