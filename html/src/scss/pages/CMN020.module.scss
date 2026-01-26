@@ -1,0 +1,65 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+
+// レスポンシブ用
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+// レスポンシブ用
+@mixin for-1255 {
+  @media screen and (max-width: 1255px) {
+    @content;
+  }
+}
+
+// メイン画面
+.CMN020_main_container {
+  padding: 10px 40px;
+  height: calc(100vh - 45px);
+}
+
+// 各お知らせパネル
+.notice_list_area_container {
+  width: 100%;
+  height: fit-content;
+  background-color: $color_white;
+  padding: 15px 25px;
+  border-radius: 20px;
+  //border: 1px solid $color_btn_top_header;
+  margin-top: 15px;
+}
+
+.info_container {
+  display: flex;
+}
+
+.info_date {
+  display: inline-flex;
+  width: 140px !important;
+  min-width: 140px !important;
+}
+
+.info_text {
+  font-size: 14px;
+  font-weight: bolder;
+  white-space: break-spaces;
+  word-wrap: break-word;
+}
+
+.CMN020_notice_list_section {
+  width: 100%; 
+  height: calc(100% - 110px);
+  overflow: scroll;
+  padding-right: 15px;
+}
+
+.info_text_container {
+  width: 92%;
+
+  @include for-1366 {
+    width: 89% !important;
+  }
+}

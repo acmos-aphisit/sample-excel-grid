@@ -1,0 +1,472 @@
+// 色の固定値を呼出
+@use "../colors.scss" as *;
+
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+@mixin for-1520-1365 {
+  @media (max-width: 1520px) and (min-width: 1380px) {
+    @content;
+  }
+}
+
+/* ヘッダー
+============================================================================= */
+header {
+  //background-image: linear-gradient(90deg, rgba(60, 211, 128, 1), rgba(60, 211, 216, 1));
+  background-color: $bg_main_color;
+}
+
+.header_inner {
+  max-width: 100%;
+  height: 45px;
+  line-height: 60px;
+  color: $color_white;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-left: 10px;
+
+  @include for-1366 {
+    font-size: 1.4em;
+    height: 45px;
+    line-height: 45px;
+    font-weight: normal;
+  }
+
+  // スマホ
+  @media (max-width: 600px) {
+    font-size: 1.8em !important;
+    img {
+      // 画像サイズの縦横比を変更せずに幅を40pxにする。
+      width: 40px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1.2em !important;
+  }
+}
+
+header .header_inner p {
+  font-size: 70%;
+  font-weight: normal;
+}
+
+header {
+  .container {
+    position: relative;
+    height: 140px;
+    padding-top: 0px;
+    overflow: visible;
+  }
+
+  #header_logo {
+    width: 535;
+    height: 90;
+    float: left;
+  }
+}
+
+/* ヘッダシステム名・アイコン
+  ============================================================================= */
+.header_system {
+  width: 350px;
+  min-width: 350px;
+  display: flex;
+  align-items: center;
+
+  @include for-1366 {
+    width: 285px;
+    min-width: 285px;
+  }
+
+  @include for-1520-1365 {
+    width: 220px;
+    min-width: 220px;
+  }
+}
+
+.header_system_img {
+  padding: 3px;
+  width: 45px;
+  height: 40px;
+  align-self: center;
+  vertical-align: middle;
+
+  @include for-1366 {
+    width: 40px;
+    height: 35px;
+  }
+}
+
+.header_system_name {
+  // width: 600px;
+}
+
+/* ヘッダログイン中のユーザー情報・ログアウトボタン
+  ============================================================================= */
+.header_user_info {
+  width: calc(100% - 1210px); // header_system : 350px, header_button : 860px
+  text-align: right;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+
+  @include for-1366 {
+    width: calc(100% - 895px); // header_system : 285px, header_button : 610px
+    font-size: 0.8em;
+  }
+
+  @include for-1520-1365 {
+    width: calc(100% - 1065px);
+  }
+
+  .header_user_info_label {
+    width: auto;
+    margin-left: auto;
+    margin-right: 0px;
+    align-items: center;
+    background-color: #4e74b9;
+    display: flex;
+    padding: 15px;
+    height: 70%;
+    border-radius: 50px;
+
+    & img {
+      width: 25px;
+    }
+
+    & span {
+      text-align: left;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+}
+
+/* ヘッダボタン
+  ============================================================================= */
+.header_button {
+  width: 800px;
+  min-width: 800px;
+  margin-left: 50px;
+  display: inline-flex;
+  align-items: anchor-center;
+
+  @include for-1366 {
+    margin-left: 30px;
+    width: 610px;
+    min-width: 610px;
+  }
+
+  @include for-1520-1365 {
+    margin-left: 30px;
+  }
+
+  .header_button_div {
+    width: 150px;
+    //background: linear-gradient(90deg, $bg_main_color 50%, $color_white 50%);
+    height: 40px;
+
+    @include for-1366 {
+      width: 120px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+    }
+
+    &.top {
+      background: linear-gradient(90deg, $bg_main_color 50%, $color_white 50%);
+    }
+
+    &.middle {
+      border-radius: 0px;
+      background-color: $color_white;
+    }
+
+    &.last {
+      background: linear-gradient(270deg, $bg_main_color 50%, $color_white 50%);
+    }
+  }
+
+  .header_button_btn {
+    position: absolute;
+    width: 150px;
+    color: $color_btn_top_header;
+
+    @include for-1366 {
+      width: 120px;
+    }
+
+    &.top {
+      border: 0;
+      outline: 0;
+      font-size: $ruler * 1.4;
+      border-radius: 50px 0px 0px 50px;
+      padding: $ruler;
+      background-color: $color_white;
+
+      @include for-1366 {
+        font-size: $ruler * 1.2;
+        padding: $ruler * 0.9;
+      }
+    }
+
+    &.selected_top {
+      z-index: 1;
+      background-color: $bg_header_selected_button !important;
+      color: #554b4b;
+      border-radius: 50px;
+    }
+
+    &.middle {
+      border: 0;
+      outline: 0;
+      font-size: $ruler * 1.4;
+      border-radius: 0px 0px 0px 0px;
+      padding: $ruler;
+      background-color: $color_white;
+
+      @include for-1366 {
+        font-size: $ruler * 1.2;
+        padding: $ruler * 0.9;
+      }
+    }
+
+    &.selected_middle {
+      z-index: 1;
+      background-color: $bg_header_selected_button !important;
+      color: #554b4b;
+      border-radius: 50px;
+    }
+
+    &.last {
+      border: 0;
+      outline: 0;
+      font-size: $ruler * 1.4;
+      border-radius: 0px 50px 50px 0px;
+      padding: $ruler;
+      background-color: $color_white;
+
+      @include for-1366 {
+        font-size: $ruler * 1.2;
+        padding: $ruler * 0.9;
+      }
+    }
+
+    &.selected_last {
+      z-index: 1;
+      background-color: $bg_header_selected_button !important;
+      color: #554b4b;
+      border-radius: 50px;
+
+      &.dropdown {
+        background-image: url("/img/arrow-under-white.png");
+      }
+
+      &.dropdown_opened {
+        background-image: url("/img/arrow-top-white.png");
+      }
+    }
+
+    &:hover {
+      -webkit-transform: scale(1) !important;
+      transform: scale(1) !important;
+    }
+
+    &:active {
+      box-shadow: none;
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &.dropdown {
+      // display: inline-block;
+      background-image: url("/img/arrow-under.png");
+      background-repeat: no-repeat;
+      background-position: right 30px center;
+      background-size: 10px;
+      transition: all 0.3s ease-in;
+
+      @include for-1366 {
+        background-position: right 20px center;
+      }
+    }
+
+    &.dropdown_opened {
+      // display: inline-block;
+      background-image: url("/img/arrow-top.png");
+      background-repeat: no-repeat;
+      background-position: right 30px center;
+      background-size: 10px;
+      transition: all 0.3s ease-in;
+
+      @include for-1366 {
+        background-position: right 20px center;
+      }
+    }
+  }
+}
+
+.header_button_logout {
+  width: 110px;
+  margin-left: 10px;
+  padding-left: 0;
+  font-weight: bold;
+  color: $color_btn_text;
+  background-color: $color-white;
+  background-repeat: no-repeat;
+  background-position: right 5% bottom 50%;
+  background-image: url("/img/logout.png");
+  background-size: 24px;
+
+  @include for-1366 {
+    height: 30px !important;
+    background-size: 16px;
+    padding-left: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    background-position: right 10% bottom 50%;
+  }
+}
+
+/* ドロップダウンメニュー
+============================================================================= */
+.header_dropdown_panel {
+  position: fixed;
+  align-content: center;
+  z-index: 999999;
+  top: 0;
+  height: 180px;
+  margin: 65px 0 0 0;
+  overflow: none;
+  border-radius: 20px;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+
+  &.support {
+    right: 20%;
+    width: 786px;
+  }
+
+  &.maintain {
+    right: 8%;
+    width: 1150px;
+  }
+
+  &.show {
+    opacity: 1;
+    transition: all 0.3s ease-in;
+  }
+
+  .header_dropdown_content {
+    background-color: $bg_main_color;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 15px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .header_button_sub_menu_panel {
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .header_button_sub_menu {
+      width: 170px;
+      height: 100px;
+      color: $bg_main_color;
+      background-color: $color_white;
+      border-radius: 10px;
+      padding-top: 50px;
+
+      &.notice_manage {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_support_notice.png");
+        background-size: 50px;
+      }
+
+      &.video_manual {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_support_vidoe_manual.png");
+        background-size: 50px;
+      }
+
+      &.manual_download {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_support_manual_download.png");
+        background-size: 50px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      &.memo_manage {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_support_memo.png");
+        background-size: 50px;
+      }
+
+      &.user_manage {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_user.png");
+        background-size: 50px;
+      }
+
+      &.location {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_location.png");
+        background-size: 50px;
+      }
+
+      &.items_setting {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_checklist.png");
+        background-size: 50px;
+      }
+
+      &.statndart_setting {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_chart.png");
+        background-size: 50px;
+      }
+
+      &.input_page {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_page.png");
+        background-size: 50px;
+      }
+
+      &.report_page {
+        background-repeat: no-repeat;
+        background-position: top 10% left 52%;
+        background-image: url("/img/sub_menu_maintain_report.png");
+        background-size: 50px;
+      }
+
+      &:focus {
+        outline: none;
+        transform: scale(0.95);
+        box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1) inset,
+          -4px -4px 10px rgba(255, 255, 255, 0.1) inset;
+      }
+    }
+  }
+}

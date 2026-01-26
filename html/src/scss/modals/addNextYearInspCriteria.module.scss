@@ -1,0 +1,143 @@
+/* 適用年度追加_スタイル */
+
+// 色の固定値を呼出
+@use "../colors.scss" as *;
+
+// レスポンシブ用
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+// レスポンシブ用
+@mixin for-1255 {
+  @media screen and (max-width: 1255px) {
+    @content;
+  }
+}
+
+.panel_modal_content {
+  width: 100%;
+  height: 23vh;
+  margin: 0;
+  border-radius: 0;
+
+  @include for-1366 {
+    height: 35vh;
+  }
+
+  .input_form_area {
+    position: relative;
+    height: calc(100% - 10px);
+    padding: 0px 10px;
+
+    @include for-1366 {
+      height: calc(100% - 10px);
+    }
+  }
+}
+
+.panel_modal_content_without_msg {
+  width: 100%;
+  height: 15vh;
+  margin: 0;
+  border-radius: 0;
+
+  @include for-1366 {
+    height: 25vh;
+  }
+
+  .input_form_area {
+    position: relative;
+    height: calc(100% - 10px);
+    padding: 0px 10px;
+
+    @include for-1366 {
+      height: calc(100% - 10px);
+    }
+  }
+}
+
+.panel_modal_content_with_msg {
+  width: 100%;
+  height: 20vh;
+  margin: 0;
+  border-radius: 0;
+
+  @include for-1366 {
+    height: 30vh;
+  }
+
+  .input_form_area {
+    position: relative;
+    height: calc(100% - 10px);
+    padding: 0px 10px;
+
+    @include for-1366 {
+      height: calc(100% - 10px);
+    }
+  }
+}
+
+.panel_modal_content_with_msg_with_proc {
+  width: 100%;
+  height: 25vh;
+  margin: 0;
+  border-radius: 0;
+
+  @include for-1366 {
+    height: 35vh;
+  }
+
+  .input_form_area {
+    position: relative;
+    height: calc(100% - 55px);
+    padding: 0px 10px;
+
+    @include for-1366 {
+      height: calc(100% - 45px);
+    }
+  }
+}
+
+.panel_modal_content_with_msg_without_proc {
+  width: 100%;
+  height: 20vh;
+  margin: 0;
+  border-radius: 0;
+
+  @include for-1366 {
+    height: 30vh;
+  }
+
+  .input_form_area {
+    position: relative;
+    height: calc(100% - 10px);
+    padding: 0px 10px;
+
+    @include for-1366 {
+      height: calc(100% - 10px);
+    }
+  }
+}
+
+.form_container {
+  margin-top: 10px;
+}
+
+.form_label {
+  width: 60%;
+  align-content: center;
+  font-size: 12pt;
+  font-weight: bold;
+  color: $bg_color_select_option;
+}
+
+.loading_position {
+  margin-top: 2dvh;
+
+  @include for-1366 {
+    margin-top: 4dvh;
+  }
+}

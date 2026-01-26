@@ -1,0 +1,186 @@
+@use "colors" as *;
+
+/* ボタンスタイル
+============================================================================= */
+button {
+  color: $color-white;
+  font-weight: bold;
+  // box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow;
+
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 20px 8px 20px;
+
+  &.color_main {
+    background-color: $color_primary;
+  }
+
+  &.color_green {
+    background-color: $color_btn_green;
+  }
+
+  &:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  .current:hover,
+  &.current:focus {
+    color: #61677c !important;
+    transform: none;
+  }
+
+  &:active {
+    box-shadow: inset 3px 3px 2px $color_shadow,
+      inset -3px -3px 2px $color_white;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &.unit {
+    border-radius: $ruler/2;
+    line-height: 0;
+    width: $ruler * 3;
+    height: $ruler * 3;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 $ruler/2;
+    font-size: $ruler * 1.2;
+  }
+
+  &.red {
+    color: $color_red;
+  }
+
+  &.arrow_icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.arrow_icon::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: 3px solid $color_primary;
+    border-right: 3px solid $color_primary;
+    transform: rotate(45deg);
+  }
+
+  &.search_icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.search_icon::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url("/img/search_icon.png");
+  }
+
+  &.search-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.search-icon::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url("/img/search_icon.png");
+  }
+
+  &.post_icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.post_icon::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url("/img/post_icon.png");
+  }
+
+  &.jyusyo_icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.jyusyo_icon::before {
+    content: "";
+    width: 16px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-image: url("/img/jyusyo_icon.png");
+  }
+
+  &.ginkou_icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.ginkou_icon::before {
+    content: "";
+    width: 16px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-image: url("/img/ginkou_icon.png");
+  }
+
+  &.border {
+    border: 2px solid $color_primary;
+  }
+
+  &.footer_button {
+    color: #4169e1;
+    background-color: #cbfdc4;
+    text-shadow: none;
+    border: 2px solid #5b5757;
+  }
+
+  &.footer_button:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  &.delete_button {
+    color: #000000;
+    background-color: #cecece;
+    text-shadow: none;
+    border: 2px solid #5b5757;
+    font-weight: normal;
+  }
+
+  &.delete_button:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  // 活性ボタン_白背景
+  &.button_active_white {
+    color: $color_select;
+    background-color: $color_white !important;
+
+    &:hover {
+      border: none;
+    }
+
+    &:focus {
+      box-shadow: inset 3px 3px 2px $color_shadow,
+        inset -3px -3px 2px $color_white;
+      outline: 0;
+    }
+  }
+}

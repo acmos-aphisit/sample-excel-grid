@@ -1,0 +1,24 @@
+/* タイトル_スタイル */
+
+// 色の固定値を呼出
+@use "../colors.scss" as *;
+
+.title_area {
+  padding: 10px;
+
+  h1 {
+    // font-size: 2em;
+    font-size: 28px;
+    color: #333333;
+
+    span.b {
+      color: #017c35;
+
+      /*green*/
+    }
+
+    img {
+      margin: 0 10px;
+    }
+  }
+}
