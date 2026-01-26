@@ -1,0 +1,15 @@
+/home/suishitsu/html/src/__tests__/test_script　に入る
+
+・例：WQM010
+　⓵ chmod +x wqm010_test.sh　を実行する
+　➁ ./wqm010_test.sh　を実行する
+
+コマンド通常に終了したら、/home/suishitsu/html/src/__tests__/results にファイルが出力される
+
+***********************************************************************************************
+自動単体テスト
+/home/suishitsu/html　に入る
+　npm run test ./src/__tests__/WQM010/wqm010.test.tsx
+
+総合自動単体テスト
+　npm run test:coverage
