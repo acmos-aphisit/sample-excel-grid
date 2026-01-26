@@ -1,0 +1,9 @@
+/home/suishitsu/system　に入る
+
+・例：WQM010
+　⓵ php artisan test tests/Unit/Wqm010Test.php　を実行する
+
+***********************************************************************************************
+
+総合自動単体テスト
+　php artisan test
