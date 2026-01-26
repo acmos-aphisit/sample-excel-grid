@@ -22,7 +22,7 @@ const CMN010 = (): JSX.Element => {
   const Cmn010State = Cmn010StateContainer();                   // ログイン
 
   // ヘッダ画像
-  const headerImage = "./img/drop-of-water-logo.png";
+  const headerImage = "./img/my-table-logo.png";
   const toggleShowPasswordImage = "./img/input-show-password-icon.png";
   const toggleHidePasswordImage = "./img/input-hide-password-icon.png";
   const headerText = import.meta.env.VITE_SYSTEM_NAME;
@@ -221,7 +221,7 @@ const CMN010 = (): JSX.Element => {
               data-testid="CMN010-1-9"
               width="100%"
               height="42px"
-              color="#4d5fb1"
+              color="#4db196"
               margin="0px 0px 15px 0px"
               onClick={() => {
                 login();

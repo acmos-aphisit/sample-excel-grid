@@ -1554,7 +1554,7 @@ const Footer = (): JSX.Element => {
                   width="100px"
                   // height="35px"
                   title="トレンド"
-                  color="#4d5fb1"
+                  color="#4db196"
                   margin="0px 0px 0px 15px"
                   className="footer_btn_right"
                   onClick={() => {

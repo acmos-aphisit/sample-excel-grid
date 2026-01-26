@@ -170,7 +170,7 @@ const WQM030 = (): JSX.Element => {
                         <Button
                             title="確認ダイアログを開く"
                             width="200px"
-                            color="#4d5fb1"
+                            color="#4db196"
                             className="footer_btn_right"
                             margin="0px 0px 10px 0px"
                             onClick={() => {
@@ -203,7 +203,7 @@ const WQM030 = (): JSX.Element => {
                         <Button
                             title="ダウンロード中ダイアログを開く"
                             width="250px"
-                            color="#4d5fb1"
+                            color="#4db196"
                             className="footer_btn_right"
                             margin="0px 0px 10px 0px"
                             onClick={() => {
