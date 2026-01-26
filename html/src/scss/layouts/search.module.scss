@@ -1,0 +1,118 @@
+@use "../colors" as *;
+
+.search_area {
+  > div {
+    font-size: 13px;
+  }
+  width: 100%;
+  border-radius: 10px;
+  padding: 0 10px;
+  background-color: $color_white;
+  flex-direction: column;
+  color: $txt_color_main;
+  display: flex;
+  // div {
+  //   display: flex;
+  // }
+
+  // 処理部
+  .action_area {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    // 検索ボタン
+    .search_button {
+      background-color: $bg_header_button;
+    }
+  }
+  // 検索条件部
+  .condition_area {
+    display: flex;
+    flex-direction: column;
+    // height: 350px;
+    height: auto;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    padding: 0 0 10px 0;
+
+    // border-top: 1px solid $color_sort;
+    // max-height: 200vh;
+    // opacity: 1;
+  }
+
+  // 開閉用
+  .open_condition {
+    overflow: visible;
+    border-top: 1px solid $color_sort;
+    max-height: 200vh !important;
+    z-index: 1 !important;
+    opacity: 1 !important;
+
+    // border-top: 0;
+    // max-height: 0px !important;
+    // opacity: 0;
+  }
+
+  // 開閉用アイコン
+  .icon {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e6e6e6, $color-white);
+    box-shadow: 3px 3px 5px #d9d9d9, -3px -3px 5px $color-white;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  // [+]
+  .plus {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 6px;
+      left: 13px;
+      height: 18px;
+      width: 4px;
+      background: rgb(131, 131, 131);
+      border-radius: 15px;
+    }
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 13px;
+      left: 6px;
+      height: 4px;
+      width: 18px;
+      background: rgb(131, 131, 131);
+      border-radius: 15px;
+    }
+  }
+  // [-]
+  .minus {
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 13px;
+      left: 6px;
+      height: 4px;
+      width: 18px;
+      background: rgb(131, 131, 131);
+      border-radius: 15px;
+    }
+  }
+}

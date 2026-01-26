@@ -1,0 +1,127 @@
+/* サイドメニュー_スタイル */
+
+// 色の固定値を呼出
+@use "../colors.scss" as *;
+
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+.top_sidebar {
+  width: 0;
+  margin-right: 300px;
+  transition: 0.6s !important;
+}
+
+.sidemenu {
+  width: 300px;
+  min-width: 300px;
+  min-width: 20px !important;
+  height: auto;
+  // min-height: 100vh;
+  position: absolute !important;
+  display: block;
+  // top: 60px !important;
+  left: 0 !important;
+  padding: 0 5px 0 0;
+  transition: 0.5s !important;
+  overflow-x: hidden !important;
+  white-space: nowrap !important;
+  background-color: $color_white;
+}
+
+.sidemenu_top {
+  height: 24px;
+  width: 275px;
+  margin: 10px 10px 10px 10px;
+  align-items: center;
+  color: $color_btn_text;
+  text-align-last: right;
+  cursor: pointer;
+  // border: 1px solid $color_border_gray;
+  // border-radius: 10px;
+
+  .sidemenu_top_text {
+    margin-right: 45px;
+  }
+}
+
+.sidemenu_top_search {
+  height: 40px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.sidemenu_middle {
+  padding-left: 10px;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: flex-start;
+  > div {
+    width: 100% !important;
+    > div {
+      width: 100% !important;
+    }
+  }
+
+  @include for-1366 {
+    height: calc(100vh - 125px);
+  }
+}
+
+.sidemenu_bottom {
+  border: solid 1px $color_border_gray;
+  height: 33vh;
+}
+
+.sidemenu_open,
+.sidemenu_close {
+  display: none;
+}
+
+.side_menu_remove_top {
+  top: 0 !important;
+}
+
+.sidemenu_open {
+  position: fixed;
+  display: block;
+  z-index: 1;
+  top: 72px;
+  left: 260px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: 0.5s !important;
+  background-color: $color_white;
+  background-image: url("/img/sidebar-hide.png");
+  background-size: cover;
+
+  h2 {
+    text-align: center;
+    color: $bg_main_color;
+  }
+}
+
+.sidemenu_close {
+  position: fixed;
+  display: block;
+  z-index: 1;
+  top: 72px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: 0.5s !important;
+  background-color: $color_white;
+  background-image: url("/img/sidebar-show.png");
+  background-size: cover;
+
+  h2 {
+    text-align: center;
+    color: $bg_main_color;
+  }
+}

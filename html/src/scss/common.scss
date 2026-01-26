@@ -1,0 +1,2509 @@
+/** 
+* スタイル概要
+* 
+* 対応画面サイズ
+*   最小：1365×768   FWXGA (Full-Wide-XGA)
+*   最大：3820×2160  4K/UHD
+* 
+*/
+//
+
+// 色の固定値を呼出
+@use "colors" as *;
+
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+@mixin for-1225 {
+  @media screen and (max-width: 1225px) {
+    @content;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 共通値
+$ruler: 10px;
+
+* {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$main-font: "Roboto", sans-serif;
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: -webkit-fill-available;
+  font-family: $main-font;
+  color: $color_top_header;
+  background-color: $bg_color_main;
+}
+
+#root {
+  // 最大解像度
+  max-width: 3820px;
+  max-height: 2160px;
+}
+
+#title {
+  user-select: none !important;
+  cursor: default !important;
+}
+
+.container_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+}
+
+.container_just {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.container_end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+.contents_label {
+  color: $color_dark;
+  background-color: $bg_main_color;
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+body,
+p,
+input,
+select,
+textarea,
+button {
+  letter-spacing: -0.2px;
+  font-size: $ruler * 1.4;
+  @include for-1366 {
+    font-size: $ruler * 1.2;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .button_top_check {
+    color: #d79008;
+    background-image: url("/img/warning_icon.png");
+    background-repeat: no-repeat;
+    background-position: left 13px center;
+    border: 1px solid #eaefa2;
+    padding: 8px 10px 8px 40px;
+    background-size: 15% auto;
+    width: 130px !important;
+    height: 38px;
+    box-shadow: 1px 1px 1px #d5d0c0, 0px 2px 1px #d1d1d1;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+  }
+
+  .button_hover_orange {
+    color: $color_white !important;
+    background-color: #ed7d31;
+
+    &:hover {
+      border: solid 1px #e65100;
+    }
+  }
+
+  .button_hover_gray {
+    background-color: #a7a7a7;
+
+    &:hover {
+      border: solid 1px #757575;
+    }
+  }
+
+  .button_hover_green {
+    background-color: #4caf50;
+
+    &:hover {
+      border: solid 1px #33691e;
+    }
+  }
+
+  .button_hover_blue {
+    background-color: $color_btn_blue;
+
+    &:hover {
+      border: solid 1px #261e69;
+    }
+  }
+
+  .button_hover_red {
+    background-color: #c62828;
+
+    &:hover {
+      border: solid 1px #b71c1c;
+    }
+  }
+
+  .table_select_btn {
+    background-color: $color_white;
+    color: $bg_grid_table_header;
+    border: solid 1px $border_color_calrendar;
+    border-radius: 15px;
+
+    &:hover {
+      border: solid 1px $color_scroll_thumb;
+    }
+
+    &.selected {
+      pointer-events: none;
+    }
+  }
+
+  .button_hover_blue_link {
+    color: $color_btn_blue;
+    font-weight: bolder;
+    background-color: $color_white;
+    border-color: $color_btn_blue;
+    background-image: url("/img/arrow-right.png");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 8%;
+
+    &:hover {
+      color: $color_white;
+      background-color: $color_btn_blue;
+      background-image: url("/img/arrow-right-white.png");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 8%;
+    }
+  }
+
+  .button_float_right {
+    float: right;
+  }
+}
+
+input,
+textarea {
+  border: 0;
+  outline: 0;
+  font-size: $ruler * 1.4;
+  border-radius: 10px;
+  padding: $ruler;
+  background-color: $color_white;
+  // text-shadow: 1px 1px 0 $color_white;
+}
+
+/** ##############################↓↓↓↓↓ COMMON 汎用 ↓↓↓↓↓##############################　*/
+#listArea {
+  height: calc(100% - 178px) !important;
+
+  @include for-1366 {
+    height: 190px !important;
+  }
+}
+
+#spt010-list-area {
+  height: calc(100% - 178px) !important;
+
+  @include for-1366 {
+    width: 100%;
+    height: 350px !important;
+    margin: 10px 0 0px 0;
+  }
+}
+
+#spt030-list-area {
+  height: calc(100% - 178px) !important;
+
+  @include for-1366 {
+    width: 100%;
+    height: 294px !important;
+    margin: 10px 0 0px 0;
+  }
+}
+
+// インプットスタイル
+input,
+textarea {
+  // box-shadow: inset 2px 2px 5px $color-shadow, inset -2px -2px 5px $color-white;
+  border: 3px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  // font: caption;
+
+  &:focus {
+    box-shadow: inset 1px 1px 2px $color_shadow, inset -1px -1px 2px $color_white;
+  }
+
+  &.required {
+    text-shadow: none;
+    background: $color_required;
+    box-shadow: inset 2px 2px 5px $color_input_required_shadow, inset -2px -2px 5px $color_input_required_highlight;
+
+    &:focus {
+      box-shadow: inset 1px 1px 2px $color_input_required_shadow, inset -1px -1px 2px $color_input_required_highlight;
+    }
+  }
+}
+
+input[type="date"] {
+  font-size: 18px;
+}
+
+label.lbl_chk {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: none;
+
+  & input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 50px;
+    padding: 0 0 0 0;
+  }
+
+  & .icon_box {
+    width: 30px;
+    height: 30px;
+    background: $color_bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 2px 2px 5px $color_shadow, inset -2px -2px 5px $color_white;
+    border-radius: 10px;
+    color: #616161 !important;
+  }
+
+  & :checked ~ .icon_box {
+    background: #3d50a5;
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), 4px 4px 10px 0 rgba(0, 0, 0, 0.2) inset, -4px -4px 10px rgba(255, 255, 255, 0.1) inset;
+    transform: scale(0.95);
+  }
+}
+
+/* コンテナー
+============================================================================= */
+.container {
+  margin-right: auto;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  height: 100%;
+}
+
+.container_side_menu {
+  margin: 0 0 0 10px;
+  width: calc(100% - 315px);
+  overflow: visible;
+  position: relative;
+  height: 100%;
+}
+
+.container_range {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.contents {
+  padding: 10px 30px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+
+.contents_panel {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+
+  h2 {
+    color: $bg_main_color;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+}
+
+.panel_innner {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.container_grid_table {
+  margin: 0 0 0 10px;
+  width: calc(100% - 315px);
+  overflow: visible;
+  position: relative;
+  height: 100%;
+}
+
+.contents_panel a {
+  &.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    width: 200px;
+    border-radius: 70px;
+    background-color: #fff;
+    border: 2px solid $bg_main_color;
+    color: $bg_main_color;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-top: 3px solid $bg_main_color;
+      border-right: 3px solid $bg_main_color;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      text-decoration: none;
+      background-color: #ffff99;
+    }
+  }
+
+  &.inactive {
+    /*非活性*/
+
+    border: 2px solid #cccccc;
+    color: #cccccc;
+
+    &::after {
+      border-top: 3px solid #cccccc;
+      border-right: 3px solid #cccccc;
+    }
+
+    &:hover {
+      background-color: #ffffff;
+    }
+  }
+
+  &.btn2 {
+    /*表の中のボタン*/
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    width: 120px;
+    border-radius: 70px;
+    background-color: #fff;
+    border: 2px solid $bg_main_color;
+    color: $bg_main_color;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-top: 3px solid $bg_main_color;
+      border-right: 3px solid $bg_main_color;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      text-decoration: none;
+      background-color: #ffff99;
+    }
+  }
+}
+
+/* テキスト入力
+============================================================================= */
+.input_group {
+  // display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+    flex: 1;
+  }
+}
+
+/* スクロールバー_全体共通
+============================================================================= */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: $color_btn_text;
+}
+
+/* フッタバー
+============================================================================= */
+.foot_nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #393a3d;
+  border-radius: 0 0 0px 0px;
+  display: block;
+  align-items: center;
+  padding: 0 5px 0 5px;
+  list-style-type: none;
+  align-content: center;
+
+  @include for-1366 {
+    height: 45px;
+  }
+
+  button {
+    font-size: 12px !important;
+  }
+
+  li.logo {
+    margin-right: auto;
+    font-family: $main-font;
+    font-size: 1.5rem;
+    color: dimgray;
+    font-weight: 900;
+  }
+
+  li:not(.logo) {
+    margin: 0 1rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    text-shadow: none;
+    border-radius: 10px;
+    font-family: $main-font;
+    cursor: pointer;
+    color: #efeeee;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      transform: scale(0.95);
+      box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1) inset, -4px -4px 10px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    &.foot_delete_button {
+      background-color: #aaaaaa;
+      color: #000000;
+    }
+
+    &.register_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_btn_green;
+    }
+
+    &.discard_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_shadow;
+      color: $color_dark;
+    }
+
+    &.delete_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_red;
+    }
+
+    &.register_icon::before {
+      // content: "";
+      // width: 16px;
+      // height: 16px;
+      // background-repeat: no-repeat;
+      // background-image: url(./img/register-icon.png);
+    }
+  }
+
+  .footer_cencel_btn {
+    color: $color_white;
+  }
+
+  .footer_prev_btn {
+    color: $color_btn_text;
+  }
+
+  .footer_btn_right {
+    float: right;
+  }
+
+  .footer_btn_left {
+    float: left;
+  }
+}
+
+.footer_modal_btn_left {
+  float: left;
+}
+
+/* モダール
+============================================================================= */
+.modal {
+  position: fixed;
+  align-content: center;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: none;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal_content {
+    background-color: #dde7f3;
+    width: 60vw;
+    margin: 4% auto;
+    border-radius: 10px;
+
+    .close_button {
+      width: 80px;
+      padding: 12px;
+      box-shadow: none;
+    }
+
+    .modal_header {
+      padding: 10px 10px 0 10px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+
+      span {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+
+    .modal_footer {
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      background-color: #393a3d;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+    margin: 0 10px 0 10px;
+    table-layout: fixed;
+
+    tr {
+      font-weight: normal;
+      text-shadow: none;
+    }
+  }
+}
+
+// セレクトスタイル
+select {
+  border: 3px solid #ccc;
+  outline: 0;
+  color: #616161;
+  font-size: $ruler * 1.4;
+  border-radius: 10px;
+  padding: 10px;
+  // box-shadow: -2px -2px 5px $color_white, 2px 2px 5px $color_shadow;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  width: 200px;
+  text-shadow: none;
+  // text-shadow: 1px 1px 0 $color_white;
+
+  background-color: $color_white;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: right 10px center;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  ::-ms-expand {
+    display: none;
+  }
+
+  &.required {
+    background-color: $color_required;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: right 10px center;
+  }
+
+  &.kaisou {
+    font-family: monospace, serif;
+  }
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    right: 25px;
+    margin-top: -3px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transform: rotate(45deg) translateY(-50%);
+    transition: all 0.4s ease-in-out;
+    transform-origin: 50% 0;
+    background-color: #2b97f1;
+  }
+}
+
+.db_init_container {
+  width: 90dvw;
+  height: 80dvh;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 15px 0px;
+  justify-self: center;
+  background-color: $color_white;
+
+  .input_area {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.item {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background: #f4f7fc;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+select:disabled {
+  background-color: #dedee9;
+}
+
+input:disabled {
+  background-color: #dedee9;
+}
+
+button:disabled {
+  filter: contrast(0.3);
+  pointer-events: none;
+}
+
+option:disabled {
+  background-color: #dedee9;
+}
+
+/* ComboBox, AutoComplete
+============================================================================= */
+#combobox_comp_container {
+  & .combo_box {
+    position: relative;
+    //width: 200px;
+    display: block;
+  }
+
+  &.combobox_search {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  & .combobox_input {
+    border: 0;
+    outline: 0;
+    color: #616161;
+    font-size: 14px;
+    padding: 0px 0px 0px 5px;
+    border-radius: 0px;
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    width: 200px;
+    height: 25px;
+    text-shadow: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: right 10px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  & .combobox_search_input {
+    border: 0;
+    outline: 0;
+    color: #616161;
+    font-size: 14px;
+    padding: 0px 0px 0px 5px;
+    border-radius: 0px;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    width: 200px;
+    height: 24px;
+    text-shadow: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: right 10px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  & .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  & .options {
+    position: fixed;
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #acacac;
+    border-radius: 0px;
+    max-height: fit-content;
+    background-color: #fff;
+    z-index: 99;
+
+    // 20250806 追加
+    height: 40dvh;
+    overflow: auto;
+    width: fit-content;
+    min-width: 200px;
+  }
+
+  & .options li {
+    font-size: $ruler * 1.4;
+    padding: 1px 0 1px 20px;
+    cursor: pointer;
+  }
+
+  & .options li.selected {
+    color: #fff;
+    background-color: #1c64d4;
+  }
+
+  & .options li:hover {
+    color: #fff;
+    background-color: #1c64d4;
+  }
+
+  & .options li:last-child:hover {
+    color: #fff;
+    background-color: #1c64d4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  & .options_null {
+    border: 0 1px 0 1px solid #acacac;
+    height: 20px;
+    padding: 0;
+    background-color: #fff;
+    z-index: 99;
+  }
+
+  & .options_null li {
+    font-size: $ruler * 1.4;
+    padding: 1px 0 3px 20px;
+    cursor: pointer;
+  }
+
+  & .options_null li:hover {
+    color: #fff;
+    background-color: #1c64d4;
+  }
+
+  .combobox_search {
+    cursor: pointer;
+  }
+}
+
+#inspection-item-setting-modal-search {
+  .search_area_action_area {
+  }
+
+  h2 {
+    color: $bg_color_select_option;
+  }
+
+  // 開閉用
+  .open_condition {
+    border-top: 1px solid $color_sort;
+    max-height: 1dvh !important;
+    z-index: 1 !important;
+    opacity: 1 !important;
+
+    // border-top: 0;
+    // max-height: 0px !important;
+    // opacity: 0;
+  }
+}
+
+/* ページネーション
+============================================================================= */
+.foot_pagination {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-radius: 0 0 0px 0px;
+  display: block;
+  align-items: center;
+  padding: 0 5px 0 5px;
+  list-style-type: none;
+  align-content: center;
+  text-align: center;
+
+  @include for-1366 {
+    height: 60px;
+  }
+
+  button {
+    font-size: 12px !important;
+  }
+
+  li.logo {
+    margin-right: auto;
+    font-family: $main-font;
+    font-size: 1.5rem;
+    color: dimgray;
+    font-weight: 900;
+  }
+
+  li:not(.logo) {
+    margin: 0 1rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    text-shadow: none;
+    border-radius: 10px;
+    font-family: $main-font;
+    cursor: pointer;
+    color: #efeeee;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+      transform: scale(0.95);
+      box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1) inset, -4px -4px 10px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    &.foot_delete_button {
+      background-color: #aaaaaa;
+      color: #000000;
+    }
+
+    &.register_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_btn_green;
+    }
+
+    &.discard_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_shadow;
+      color: $color_dark;
+    }
+
+    &.delete_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color_red;
+    }
+
+    &.register_icon::before {
+      // content: "";
+      // width: 16px;
+      // height: 16px;
+      // background-repeat: no-repeat;
+      // background-image: url(./img/register-icon.png);
+    }
+  }
+
+  .footer_cencel_btn {
+    color: $color_white;
+  }
+
+  .footer_prev_btn {
+    color: $color_btn_text;
+  }
+
+  .footer_btn_pagination {
+    color: $color_btn_blue;
+    font-weight: bolder;
+    background-color: $color_white;
+    border-color: $color_btn_blue;
+
+    &:hover {
+      color: $color_white;
+      background-color: $color_btn_blue;
+    }
+
+    &.active {
+      color: $color_white;
+      background-color: $color_btn_blue;
+    }
+  }
+
+  .footer_btn_continue {
+    color: $color_btn_blue;
+    font-weight: bolder;
+    background-color: transparent;
+    border-color: none;
+    cursor: none;
+    pointer-events: none;
+  }
+}
+
+.sort_th {
+  padding: 0px 7px !important;
+  cursor: pointer;
+
+  > div {
+    margin: 14px 18px;
+
+    &::before {
+      content: "";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border: 5px solid transparent;
+      right: 10px;
+      top: 27%;
+      border-bottom-color: #fff;
+    }
+
+    &::after {
+      content: "";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border: 5px solid transparent;
+      right: 10px;
+      top: 52%;
+      border-top-color: #fff;
+    }
+
+    > span {
+      vertical-align: middle;
+    }
+  }
+}
+
+.sort_desc {
+  > div::before {
+    border-bottom-color: #444 !important;
+  }
+}
+
+.sort_asc {
+  > div::after {
+    border-top-color: #444 !important;
+  }
+}
+
+.cursor_resize {
+  cursor: col-resize;
+}
+
+/* メッセージ用
+============================================================================= */
+.message_area {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &.info {
+    background-color: #c4dffffa !important;
+    color: #4780ff;
+    text-shadow: none;
+  }
+
+  &.error,
+  &.warning {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  &.danger {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  &.alert {
+    color: #ffbd29;
+    background: #fff5d4 !important;
+  }
+}
+
+.floating_message_area {
+  z-index: 999;
+  position: fixed;
+  display: -webkit-inline-box;
+  width: 70vw !important;
+  margin-top: 10px;
+  font-weight: bold;
+  align-content: center;
+  justify-content: space-between;
+  padding-right: 25px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+  &.info {
+    background-color: #c4dffffa !important;
+    color: #4780ff;
+    text-shadow: none;
+  }
+
+  &.error,
+  &.warning {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  &.danger {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  .main_message {
+    width: calc(100% - 20px);
+  }
+
+  .close_message {
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.message_muti_line_area {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: column !important;
+  width: 99% !important;
+  overflow: hidden;
+  transition: 0.5;
+
+  &.info {
+    background-color: #c4dffffa !important;
+    color: #4780ff;
+    text-shadow: none;
+  }
+
+  &.error,
+  &.warning {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  &.danger {
+    color: #ff662c;
+    background: #ffeded !important;
+  }
+
+  .msg_title_btn {
+    height: 25 !important;
+    display: flex !important;
+  }
+
+  .msg_show_all_error {
+    text-align: right !important;
+    color: $color_btn_text !important;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+/** ##############################↑↑↑↑↑ COMMON 汎用 ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ GRIDTABLE グリッドテーブル ↓↓↓↓↓##############################　*/
+/* グリッドテーブル（ReactGrid）_上書きスタイル
+============================================================================= */
+.rg-celleditor-input,
+.rg-celleditor input {
+  border: none !important;
+}
+
+/* ヘッダー */
+.rg-pane.rg-pane-top {
+  //height: 25px !important;
+}
+
+.rg-header-cell {
+  color: $color_white !important;
+  background-color: $bg_grid_table_header !important;
+  //height: 25px !important;
+}
+
+/* セル */
+.rg-text-cell,
+.rg-date-cell,
+.rg-checkbox-cell,
+.rg-dropdown-cell,
+.rg-number-cell {
+  background-color: white !important;
+}
+
+.rg-number-cell {
+  justify-content: center !important;
+  background-color: #d1d1d1 !important;
+}
+
+.reactgrid-wrapper {
+  height: 100px !important;
+  overflow: scroll !important;
+}
+
+.disabled-cell {
+  background-color: $bg_grid_disabled_cell !important;
+  pointer-events: none !important;
+  justify-content: right;
+}
+
+.strip-bg-color {
+  background-color: $bg_grid_table_cell !important;
+}
+
+.db-edit-data-bg {
+  background-color: $bg_grid_table_db_edit !important;
+}
+
+.abnormal-cell {
+  color: $color_text_error !important;
+  font-weight: bold;
+}
+
+.abnormal-c-cell {
+  color: $color_text_c_error !important;
+  font-weight: bold;
+}
+
+.outlier-over-item {
+  color: $color_text_error !important;
+}
+
+.outlier-c-over-item {
+  color: $color_text_c_error !important;
+}
+
+.time-bg-white {
+  background-color: $color_white;
+}
+
+.rg-cell.rg-select-cell {
+  padding: 0 0 !important;
+  background-color: white !important;
+}
+
+.rg-cell.rg-select-cell:has(.strip-bg-color) {
+  padding: 0 0 !important;
+  background-color: $bg_grid_table_cell !important;
+}
+
+.rg-cell.rg-select-cell:has(.db-edit-data-bg) {
+  padding: 0 0 !important;
+  background-color: $bg_grid_table_db_edit !important;
+}
+
+.rg-input {
+  border-radius: 0px;
+}
+
+.display-text-right {
+  justify-content: right !important;
+}
+
+.rg-celleditor.rg-text-celleditor {
+  padding: 0 0;
+
+  .rg-input {
+    color: $color_black;
+    border-radius: 0;
+  }
+}
+
+.rg-context-menu-option.disabled {
+  pointer-events: none !important;
+  color: #aaaaaa !important;
+}
+
+.hide-context-menu {
+  visibility: hidden !important;
+}
+
+.rg-cell.rg-checkbox-cell {
+  // margin-top: 3px !important;
+}
+
+.rg-cell-th-no-wrap {
+  white-space: break-spaces !important;
+}
+
+.reactgrid-content .rg-pane .rg-cell.rg-checkbox-cell label input:checked ~ span {
+  background-color: $bg_grid_table_header !important;
+}
+
+.reactgrid-content .rg-pane .rg-cell {
+  white-space: pre !important;
+}
+
+.rg-celleditor.rg-date-celleditor {
+  .rg-input {
+    color: $color_black !important;
+    border-radius: 0;
+    text-shadow: none;
+  }
+}
+
+.rg-celleditor.rg-select-celleditor {
+  padding: 0 0;
+}
+
+.disable_primary_cell {
+  background-color: $bg_grid_disabled_cell !important;
+}
+
+.base-select {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  color: $color_black;
+  background-color: $color_white;
+  padding: 1px 30px 1px 10px;
+  background: url("/img/dropdown.png") no-repeat right center;
+  background-size: 20px 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.base-time {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  color: $color_black;
+  background-color: $color_white;
+  padding: 0px 0px 0px 0px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.base-text-area {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  color: $color_black;
+  background-color: $color_white;
+  padding: 1px 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.base-date-editor {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  font-size: 1em !important;
+  color: $color_black;
+  background-color: $color_white;
+  padding: 0px 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+}
+
+.base-show-select {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  padding-left: 4px !important;
+  align-content: center !important;
+}
+
+.base-show-combobox {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  padding-left: 4px !important;
+  align-content: center !important;
+}
+
+.select-like-span {
+  display: inline-block;
+  padding: 4px 2px;
+  border-radius: 0px;
+}
+
+.base-show-text-area {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  margin-left: 0px !important;
+  white-space: pre-wrap;
+  padding-left: 4px !important;
+  background-color: $color_white;
+}
+
+.base-show-date-editor {
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  margin-left: 0px !important;
+  padding-right: 4px !important;
+  background-color: $color_white;
+  text-align-last: right;
+}
+
+.select-like-text-area {
+  display: inline-block;
+  padding: 0px 0px;
+  border-radius: 0px;
+}
+
+.rg-celleditor.rg-textArea-celleditor {
+  padding: 0px !important;
+
+  ::-webkit-scrollbar {
+    width: 5px !important;
+  }
+}
+
+.rg-cell.rg-textArea-cell {
+  padding: 0px !important;
+}
+
+.rg-cell.rg-dateEditor-cell {
+  padding: 0px !important;
+}
+
+.rg-celleditor.rg-dateEditor-celleditor {
+  padding: 0px !important;
+}
+
+#dateChanger .rg-header-cell {
+  display: none !important;
+}
+
+// コンテキストメニュー
+.rg-context-menu {
+  width: 200px !important;
+  border: solid 1px $color_shadow !important;
+  box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5) !important;
+}
+
+.grid_input_fixed {
+  .rg-cell.rg-text-cell,
+  .rg-pane.rg-pane-center-middle,
+  .rg-cell.rg-dateEditor-cell.rg-cell-nonEditable,
+  .rg-cell.rg-time-cell.display-text-right.db-edit-data-bg {
+    pointer-events: none !important;
+    filter: opacity(0.7) !important;
+  }
+}
+
+#export-report-grid {
+  .rg-header-cell {
+    justify-content: center;
+    text-align-last: center;
+  }
+
+  .rg-cell.rg-time-cell {
+    background-color: $color_white;
+  }
+}
+
+#select-option-setting-grid-table {
+  justify-items: center !important;
+  margin-top: 15px;
+}
+
+.rg-context-menu {
+  z-index: 999 !important;
+}
+
+.custom-select-all-checkbox {
+  height: 18px !important;
+  width: 18px !important;
+  background-color: #eeeeee;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #fff;
+  outline: 0;
+  border-radius: 0;
+  padding: 0px;
+
+  &:hover {
+    background-color: #d1d1d1 !important;
+  }
+
+  &:checked {
+    background-color: #4d5fb1 !important;
+    background-image: url("/img/check-icon.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom -1px left 1px;
+  }
+}
+
+// グリッドテーブル内のセルにセレクトボックスの幅サイズを調整
+#grid-table-panel {
+  #combobox_input {
+    width: 100% !important;
+  }
+}
+
+.mask-background {
+  background-color: $mask_background !important;
+}
+
+.outline-orange {
+  border: 1.5px solid $outline_orange !important;
+  background-color: $cell_background_orange !important;
+}
+
+.outline-aqua {
+  border: 1.5px solid $outline_aqua !important;
+  background-color: $cell_background_aqua !important;
+}
+
+.outline-blue {
+  border: 1.5px solid $outline_blue !important;
+  background-color: $cell_background_blue !important;
+}
+
+.outline-purple {
+  border: 1.5px solid $outline_purple !important;
+  background-color: $cell_background_purple !important;
+}
+
+.outline-green {
+  border: 1.5px solid $outline_green !important;
+  background-color: $cell_background_green !important;
+}
+
+#saisui-point-search {
+  position: relative;
+  z-index: 98;
+}
+
+.reactgrid {
+  background-color: #fff;
+}
+
+.rg-celleditor.rg-combobox-celleditor,
+.rg-cell.rg-combobox-cell {
+  padding: 0 !important;
+}
+
+// 報告書出力
+#grid-simple-table {
+  .rg-cell.rg-header-cell {
+    background-color: #4d5fb1 !important;
+    color: $color_white !important;
+  }
+
+  .text_align_center {
+    justify-content: center;
+  }
+
+  .disabled {
+    background-color: $color_white !important;
+  }
+
+  .bg-grid-item {
+    background-color: $bg_grid_setting_item !important;
+  }
+
+  /* Noの項目 **/
+  .rg-cell.rg-header-cell:nth-child(1) {
+    justify-content: center;
+  }
+
+  .sort_th {
+    padding: 0px 7px !important;
+
+    > div {
+      margin: 0;
+
+      &::before {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border: 5px solid transparent;
+        right: 10px;
+        top: 27%;
+        border-bottom-color: #fff;
+      }
+
+      &::after {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border: 5px solid transparent;
+        right: 10px;
+        top: 52%;
+        border-top-color: #fff;
+      }
+
+      > span {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .sort_desc {
+    > div::before {
+      border-bottom-color: #444 !important;
+    }
+  }
+
+  .sort_asc {
+    > div::after {
+      border-top-color: #444 !important;
+    }
+  }
+}
+
+// 採水地点設定画面
+#simple-grid-context-table {
+  .rg-cell.rg-header-cell {
+    background-color: #4d5fb1 !important;
+    color: $color_white !important;
+  }
+
+  .rg-pane.rg-pane-top {
+    z-index: 1 !important;
+  }
+
+  .text_align_center {
+    justify-content: center;
+  }
+
+  .disabled {
+    background-color: $color_white !important;
+  }
+
+  .bg-grid-item {
+    background-color: $bg_grid_setting_item !important;
+  }
+
+  /* Noの項目 **/
+  .rg-cell.rg-header-cell:nth-child(1) {
+    justify-content: center;
+  }
+
+  .sort_th {
+    padding: 0px 7px !important;
+
+    > div {
+      margin: 0;
+
+      &::before {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border: 5px solid transparent;
+        right: 10px;
+        top: 27%;
+        border-bottom-color: #fff;
+      }
+
+      &::after {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border: 5px solid transparent;
+        right: 10px;
+        top: 52%;
+        border-top-color: #fff;
+      }
+
+      > span {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .sort_desc {
+    > div::before {
+      border-bottom-color: #444 !important;
+    }
+  }
+
+  .sort_asc {
+    > div::after {
+      border-top-color: #444 !important;
+    }
+  }
+}
+/** ##############################↑↑↑↑↑ GRIDTABLE グリッドテーブル ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ REACT-CALENDAR カレンダー ↓↓↓↓↓##############################　*/
+/* react-calendar
+============================================================================= */
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  height: 265px !important;
+  min-height: 265px !important;
+  max-height: 265px !important;
+
+  @include for-1366 {
+    line-height: 0.4em !important;
+    height: 170px !important;
+    min-height: 170px !important;
+  }
+}
+
+.react-calendar__navigation {
+  @media (max-height: 900px) {
+    height: 30px !important;
+
+    .react-calendar__navigation__label {
+      align-self: center;
+    }
+  }
+
+  @include for-1366 {
+    margin-bottom: 0.2em !important;
+  }
+}
+
+.react-calendar__viewContainer {
+  width: 300px;
+}
+
+.react-calendar__navigation__arrow {
+  // アロー広さ「<<, <, >, >>」
+  width: 40px !important;
+  color: $color_black;
+  background-color: transparent;
+}
+
+.react-calendar__navigation__label {
+  // 日付のラベル
+  width: 120px !important;
+  color: $color_black;
+  background-color: transparent;
+}
+
+.react-calendar__tile {
+  color: $color_black;
+  background-color: transparent;
+
+  @include for-1366 {
+    padding: 9px 6.6667px !important;
+  }
+}
+
+#main-sidebar-bottom .react-calendar__viewContainer {
+  font-size: 14px;
+
+  .react-calendar__month-view__days:has(> button:nth-child(36)) {
+    zoom: 86%;
+  }
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 1.5em 0.5em !important;
+  @include for-1366 {
+    // padding: 1.5em 0.5em !important;
+    padding: 1.2em 0.5em !important;
+  }
+}
+
+.react-datepicker__month-container,
+.react-datepicker-popper,
+.react-datepicker__month {
+  width: auto;
+}
+
+.react-datepicker__header {
+  //   background-color: #cbfdc4;
+
+  button {
+    padding: 8px 8px 8px 8px;
+    width: 36px;
+    // border-radius: 30px;
+  }
+}
+
+.react-datepicker-YYYY {
+  text-align: center;
+  padding: 10px 5px;
+}
+
+.react-datepicker-MM {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.react-datepicker__week .react-datepicker__day:first-child,
+.react-datepicker__day-names .react-datepicker__day-name:first-child {
+  color: rgba(255, 0, 0, 1);
+}
+
+.react-datepicker__week .react-datepicker__day:last-child,
+.react-datepicker__day-names .react-datepicker__day-name:last-child {
+  color: rgba(0, 0, 255, 1);
+}
+
+.react-datepicker__day--selected {
+  color: #fff !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc !important;
+}
+
+.react-datepicker__day--outside-month {
+  color: rgba(150, 150, 150, 0.6) !important;
+}
+
+.react-datepicker-popper {
+  z-index: 10 !important;
+}
+/** ##############################↑↑↑↑↑ REACT-CALENDAR カレンダー ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ SIDEMENU サイドメニュー ↓↓↓↓↓##############################　*/
+#main-sidebar-master-middle {
+  .rg-context-menu-option:nth-child(3),
+  .rg-context-menu-option:nth-child(4),
+  .rg-context-menu-option:nth-child(6) {
+    border-bottom: solid 1px $color_shadow !important;
+  }
+
+  .chevron {
+    z-index: 1;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .reactgrid {
+    min-width: 395px !important;
+    padding-left: 5px !important;
+  }
+}
+
+#main-sidebar-middle {
+  .reactgrid {
+    margin: -25px 0px 1px 0px;
+    background-color: transparent;
+  }
+
+  .rg-cell {
+    width: 100% !important;
+    margin: 0px 10px 0px 0px;
+  }
+
+  .rg-cell-focus {
+    visibility: hidden;
+  }
+
+  .rg-cell.rg-chevron-cell {
+    border: none !important;
+    cursor: pointer !important;
+
+    .chevron {
+      margin: 0px 5px !important;
+      z-index: -1;
+    }
+
+    .icon {
+      color: transparent !important;
+      background-repeat: no-repeat !important;
+      background-position: left bottom 50% !important;
+      background-image: url("/img/menu-right.png") !important;
+      background-size: 14px;
+    }
+  }
+
+  .activated_menu {
+    background-color: $bg_color_select_option;
+    border-radius: 5px;
+    color: $color_white;
+  }
+
+  .reactgrid-content {
+    // width: fit-content !important;
+  }
+}
+
+#main-sidebar-master-middle {
+  .reactgrid {
+    margin: -25px 0px 1px 0px;
+  }
+
+  .rg-cell-focus {
+    visibility: hidden;
+  }
+
+  .rg-cell.rg-chevron-cell {
+    border: none !important;
+    cursor: pointer !important;
+
+    .chevron {
+      margin: 0px 5px !important;
+      z-index: 1;
+    }
+
+    .icon {
+      color: transparent !important;
+      background-repeat: no-repeat !important;
+      background-position: left bottom 50% !important;
+      background-image: url("/img/menu-right.png") !important;
+      background-size: 14px;
+      pointer-events: none;
+    }
+  }
+
+  .activated_menu {
+    background-color: $bg_color_select_option;
+    border-radius: 5px;
+    color: $color_white;
+
+    .icon {
+      filter: invert(100%) brightness(200%) !important;
+    }
+  }
+
+  .rg-pane.rg-center-middle {
+    overflow-x: hidden;
+  }
+}
+
+#main-sidebar-bottom {
+  .selected_date_bg {
+    color: $color_white;
+    font-weight: bold;
+    background-color: #4caf50;
+    // border-style: inset;
+    // border: 1px solid $color_white;
+    box-shadow: 0px 0px 0px 2px $color_white inset;
+    -webkit-box-shadow: 0px 0px 0px 2px $color_white inset;
+    -moz-box-shadow: 0px 0px 0px 2px $color_white inset;
+  }
+
+  .react-calendar__viewContainer {
+    width: 100%;
+  }
+
+  .react-calendar__tile--active {
+    color: $color_white;
+    background: #006edc !important;
+  }
+}
+
+.side_menu_master_list {
+  display: ruby !important;
+  padding-top: 3px !important;
+}
+/** ##############################↑↑↑↑↑ SIDEMENU サイドメニュー ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ REACT-TAB タブ ↓↓↓↓↓##############################　*/
+$primary-color: #1c64d4;
+$border-color: #e2e8f0;
+$text-main: #1e293b;
+$text-muted: #64748b;
+
+.tabs-container {
+  width: 100%;
+  max-width: 100%;
+  font-family: "Inter", sans-serif;
+
+  .tabs-header {
+    display: flex;
+    border-bottom: 2px solid $border-color;
+    width: 50%;
+    // gap: 1.5rem;
+
+    button {
+      border-radius: 0px !important;
+    }
+
+    .tab-item {
+      padding: 4px 4px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      color: #858585;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        background-color: $primary-color;
+        color: $color_white;
+        transform: scale(1);
+      }
+
+      &.active {
+        color: $color_white;
+        background-color: $primary-color;
+
+        // The underline effect
+        // &::after {
+        //   content: '';
+        //   position: absolute;
+        //   bottom: -2px;
+        //   left: 0;
+        //   width: 100%;
+        //   height: 2px;
+        //   color: $color_white;
+        //   background-color: $primary-color;
+        // }
+      }
+    }
+  }
+
+  .tabs-content {
+    padding: 4px 4px;
+    color: $text-main;
+    line-height: 1.6;
+    animation: fadeIn 0.4s ease-in-out;
+    background-color: $color_white;
+    height: calc(100dvh - 190px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.react-tabs__tab-list {
+  margin: 0px !important;
+}
+
+.react-tabs__tab {
+  width: fit-content;
+  text-align: -webkit-center;
+  user-select: none;
+}
+
+.react-tabs__tab:focus {
+  // outline: none !important;
+  outline: #006edc;
+}
+
+.react-tabs__tab:focus:after {
+  content: none !important;
+}
+
+.react-tabs__tab-panel {
+  background-color: white;
+  height: calc(100dvh - 195px);
+  padding: 5px;
+  border: solid 1px #aaa;
+  border-top: none;
+
+  @include for-1366 {
+    height: calc(100dvh - 185px);
+  }
+
+  &:has(div.month_list_table_with_err) {
+    height: calc(100dvh - 233px);
+  }
+}
+
+.MNG050_input_container_with_msg {
+  .react-tabs__tab-panel {
+    background-color: white;
+    height: calc(100dvh - 195px);
+    padding: 5px;
+    border: solid 1px #aaa;
+    border-top: none;
+
+    @include for-1366 {
+      height: calc(100dvh - 233px) !important;
+    }
+
+    &:has(div.month_list_table_with_err) {
+      height: calc(100dvh - 233px);
+    }
+  }
+}
+
+/** ##############################↑↑↑↑↑ REACT-TAB タブ ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ WQM010 検査情報登録画面 ↓↓↓↓↓##############################　*/
+#outlier_list_modal_table_panel {
+  .rg-cell.rg-header-cell {
+    background-color: $bg_outlier_table_header !important;
+  }
+
+  .rg-cell.rg-header-cell:nth-child(1) {
+    border-radius: 10px 0px 0px 0px !important;
+  }
+
+  .rg-cell.rg-header-cell:nth-child(8) {
+    border-radius: 0px 10px 0px 0px !important;
+  }
+}
+/** ##############################↑↑↑↑↑ WQM010 検査情報登録画面 ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ WQM020 検査情報検索画面 ↓↓↓↓↓##############################　*/
+.WQM020-combobox-disabled-option {
+  pointer-events: none !important;
+  filter: opacity(0.4) !important;
+}
+/** ##############################↑↑↑↑↑ WQM020 検査情報検索画面 ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ MNG050 入力設定画面 ↓↓↓↓↓##############################　*/
+#MNG050-main-container {
+  #main-content-table {
+    height: 100vh;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 100px;
+    padding-left: 20px;
+  }
+
+  .react-tabs {
+    width: 99% !important;
+  }
+}
+
+// 入力画面設定
+#MNG050-config-grid-table {
+  .rg-cell.rg-header-cell {
+    background-color: #4d5fb1 !important;
+    color: $color_white !important;
+  }
+
+  .text_align_center {
+    justify-content: center;
+  }
+
+  .disabled {
+    background-color: #eeeeee !important;
+  }
+
+  .bg-grid-item {
+    background-color: $bg_grid_setting_item !important;
+  }
+}
+
+#MNG050-item-point-grid-table {
+  position: relative;
+  overflow: hidden;
+  height: -webkit-fill-available;
+
+  .rg-pane.rg-pane-top.rg-pane-left .rg-cell.rg-header-cell {
+    // background-color: $color_white !important;
+    color: $color_black !important;
+  }
+
+  .rg-cell.rg-header-cell {
+    background: $color_white !important;
+    display: none !important;
+    pointer-events: none;
+
+    .rg-touch-column-resize-handle {
+      pointer-events: none;
+    }
+  }
+
+  .rg-cell.rg-combobox-cell {
+    padding: 0 !important;
+  }
+
+  // .rg-pane.rg-pane-top .rg-cell.rg-header-cell {
+  //   background-color: $bg_grid_setting_point !important;
+  //   color: $color_black !important;
+  // }
+
+  .text_align_center {
+    justify-content: center;
+  }
+
+  .disabled {
+    background-color: $bg_grid_disabled_cell !important;
+  }
+
+  .bg-grid-item {
+    background-color: $bg_grid_setting_item !important;
+  }
+
+  .hdr-item-cell {
+    background-color: $color_white !important;
+    pointer-events: none !important;
+  }
+
+  .hdr-point-cell {
+    background-color: $bg_grid_setting_point !important;
+  }
+
+  .rg-context-menu-option.disabled {
+    background-color: $color_white !important;
+  }
+
+  .rg-context-menu-option:nth-child(2),
+  .rg-context-menu-option:nth-child(4),
+  .rg-context-menu-option:nth-child(6) {
+    border-bottom: solid 1px $color_shadow !important;
+  }
+
+  .rg-pane.rg-pane-left {
+    z-index: 0 !important;
+  }
+
+  .mng050_grid_tabel_without_msg {
+    height: calc(100dvh - 195px) !important;
+    // width: fit-content !important;
+  }
+
+  .mng050_grid_tabel_with_msg {
+    height: calc(100dvh - 245px) !important;
+    // width: fit-content !important;
+  }
+}
+/** ##############################↑↑↑↑↑ MNG050 入力設定画面 ↑↑↑↑↑##############################　*/
+
+/** ##############################↓↓↓↓↓ MNG060 報告書設定画面 ↓↓↓↓↓##############################　*/
+#MNG060-main-container {
+  .MNG060_input_container_without_msg {
+    height: 84vh;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 100px;
+    padding-left: 20px;
+
+    @include for-1366 {
+      height: 84vh;
+      position: absolute;
+      margin-top: 10px;
+      margin-left: 100px;
+      padding-left: 20px;
+    }
+  }
+
+  .MNG060_input_container_with_msg {
+    height: 89vh;
+    overflow: auto;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 100px;
+    padding-left: 20px;
+
+    @include for-1366 {
+      height: 83vh;
+      overflow: auto;
+      position: absolute;
+      margin-top: 10px;
+      margin-left: 100px;
+      padding-left: 20px;
+    }
+  }
+}
+
+html:has(#MNG060-main-container) {
+  overflow: hidden !important;
+}
+
+#MNG060-grid-table-container {
+  #itemTable {
+    height: calc(100vh - 210px) !important;
+
+    @include for-1366 {
+      height: calc(100vh - 195px) !important;
+    }
+  }
+
+  #pointTable,
+  #textTable {
+    height: calc(100vh - 210px) !important;
+
+    @include for-1366 {
+      height: calc(100vh - 195px) !important;
+    }
+  }
+
+  .rg-context-menu {
+    z-index: 999 !important;
+  }
+
+  &.MNG060_grid_table_with_msg {
+    #itemTable {
+      height: calc(100vh - 210px) !important;
+
+      @include for-1366 {
+        height: calc(100vh - 245px) !important;
+      }
+    }
+
+    #pointTable,
+    #textTable {
+      height: calc(100vh - 210px) !important;
+
+      @include for-1366 {
+        height: calc(100vh - 245px) !important;
+      }
+    }
+  }
+}
+
+#monthListTable {
+  overflow-x: hidden;
+}
+
+.month_list_table_without_err {
+  height: calc(100dvh - 195px) !important;
+  // width: fit-content !important;
+}
+
+.month_list_table_with_err {
+  height: calc(100dvh - 245px) !important;
+  // width: fit-content !important;
+}
+
+#pointTable {
+  & .combobox_input {
+    height: 45px !important;
+    border: 0;
+    outline: 0;
+    color: #616161;
+    font-size: 14px;
+    padding: 0px 0px 0px 5px;
+    border-radius: 0px;
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    width: 200px;
+    height: 25px;
+    text-shadow: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: right 10px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+.orange_grid_table_header {
+  .rg-pane-top {
+    > .rg-header-cell {
+      background-color: $bg_grid_table_header_orange !important;
+      color: #fff;
+    }
+  }
+
+  .rg-pane.rg-pane-center-middle {
+    > .rg-cell.rg-header-cell:nth-child(1) {
+      background-color: #f9c7aa !important;
+      color: #000000 !important;
+    }
+
+    > .rg-cell.rg-header-cell:nth-child(n + 2) {
+      background-color: $bg_grid_table_header_orange !important;
+      color: #fff;
+    }
+
+    > .rg-cell.rg-select-cell.rg-cell-nonEditable {
+      background-color: $bg_grid_table_header_orange !important;
+      color: #fff;
+    }
+  }
+  .rg-pane-left {
+    > .rg-text-cell {
+      background-color: $bg_grid_table_header_orange !important;
+      color: #fff;
+    }
+    > .rg-select-cell {
+      background-color: $bg_grid_table_header_orange !important;
+      color: #fff;
+    }
+    > .rg-combobox-cell {
+      background-color: $bg_grid_table_header_orange !important;
+      // color: #fff;
+      // #combobox_comp_container .combobox_input {
+      //   color: #fff;
+      // }
+    }
+  }
+  .reactgrid-content .rg-pane-shadow.shadow-top-left-corner {
+    > .rg-header-cell {
+      // background-color: $bg_color_body !important;
+      background-color: #f9c7aa !important;
+      // background-color: #fff !important;
+      color: #000000 !important;
+    }
+  }
+}
+
+.gray_grid_table_header {
+  .rg-pane-top {
+    > .rg-header-cell {
+      background-color: $bg_grid_table_header_gray !important;
+    }
+  }
+}
+
+.mng060_grid_tabel_without_msg {
+  height: calc(100dvh - 153px) !important;
+  // width: fit-content !important;
+}
+
+.mng060_grid_tabel_with_msg {
+  height: calc(100dvh - 200px) !important;
+
+  @include for-1366 {
+    height: calc(100dvh - 200px) !important;
+  }
+
+  .react-tabs__tab-panel {
+    height: calc(100dvh - 241px) !important;
+
+    @include for-1366 {
+      height: calc(100dvh - 235px) !important;
+    }
+  }
+}
+
+/** ##############################↑↑↑↑↑ MNG060 報告書設定画面 ↑↑↑↑↑##############################　*/

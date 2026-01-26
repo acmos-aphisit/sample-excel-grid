@@ -1,0 +1,124 @@
+@use "colors" as *;
+
+/**
+* React カレンダー
+*/
+.react-date-picker {
+  // z-index: 999;
+  width: 140px !important;
+  height: 42px !important;
+  color: $color_black !important;
+}
+
+.react-date-picker__wrapper {
+  border: 3px solid #ccc !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  // transition: all 0.2s ease-in-out !important;
+  // appearance: none !important;
+  // -webkit-appearance: none !important;
+  border-radius: 10px !important;
+}
+
+.react-date-picker__inputGroup {
+  // padding: 0px 10px !important;
+  align-self: center;
+  text-align: center;
+
+  input {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  span {
+    width: 10px;
+
+    &.react-date-picker__inputGroup__divider {
+      width: 7px;
+    }
+  }
+
+  .react-date-picker__inputGroup__input--hasLeadingZero {
+    margin-left: -0.8em !important;
+  }
+
+  .react-date-picker__inputGroup__year {
+    height: 40px !important;
+    // width: 30px !important;
+    // justify-items: center;
+  }
+
+  .react-date-picker__inputGroup__month {
+    height: 40px !important;
+    // width: 12px !important;
+    // justify-items: center;
+  }
+
+  .react-date-picker__inputGroup__day {
+    height: 40px !important;
+    // width: 12px !important;
+    // justify-items: center;
+  }
+}
+
+.react-date-picker__clear-button {
+  width: 30px !important;
+
+  svg {
+    stroke: #8B8B8B !important;
+  }
+
+}
+
+.react-date-picker__inputGroup__input:invalid {
+  background-color: transparent !important;
+}
+
+.react-date-picker__calendar {
+  border: 1px solid #aeaeae;
+  border-radius: 10px;
+  margin-top: 4px;
+
+  .react-calendar {
+    border-radius: 10px !important;
+    height: 100% !important;
+    padding: 5px !important;
+  }
+
+  .react-calendar__navigation {
+    border-radius: 10px !important;
+  }
+
+  .react-calendar__viewContainer {
+    width: 100% !important;
+  }
+}
+
+.comp_date_picker_hide {
+  .react-date-picker__inputGroup {
+    color: transparent;
+
+    input::placeholder {
+      color: transparent;
+    }
+  }
+
+  .react-date-picker__clear-button {
+    display: none !important;
+  }
+}
+
+.comp_date_picker_show {
+  .react-date-picker__inputGroup,
+  .react-date-picker__clear-button {
+    display: block !important;
+  }
+}
+
+.modal_date_picker_hide {
+    display: none !important;
+}
+
+.modal_date_picker_show {
+    display: inline-flex !important;
+}

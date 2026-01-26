@@ -1,0 +1,63 @@
+/* 折り畳みリスト_スタイル */ 
+
+// 色の固定値を呼出
+@use "../colors" as *;
+
+.menu_comp_list {
+    margin-top: 0px;
+    width: 100%;
+    user-select: none;
+  }
+  
+  .menu_comp_parent_child {
+    margin: 5px 0px 5px 0px;
+    padding-left: 20px;
+    transition: .5s !important;
+    overflow: hidden;
+    user-select: none;
+  
+    &.hide {
+      height: 0px;
+      display: none !important;
+      transition: .5s !important;
+    }
+
+    &.level1 {
+      padding-left: 0 !important;
+    }
+  }
+  
+  .menu_comp_parent_child_open {
+    background-repeat: no-repeat;
+    background-position: left bottom 45%;
+    background-image: url("../../public/img/menu-down.png");
+    margin: 5px 0px 5px 0px;
+    padding-left: 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .menu_comp_parent_child_close {
+    background-repeat: no-repeat;
+    background-position: left bottom 45%;
+    background-image: url("../../public/img/menu-right.png");
+    margin: 5px 0px 5px 0px;
+    padding-left: 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .menu_comp_child_in_parent {
+    margin: 5px 0px 5px 0px;
+    padding-left: 20px;
+    transition: .5s !important;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+  
+    &.hide {
+      height: 0;
+      display: none !important;
+      transition: .5s !important;
+    }
+  }

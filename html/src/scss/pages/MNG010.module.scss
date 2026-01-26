@@ -1,0 +1,65 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+
+.MNG010_main_container {
+  padding: 10px;
+}
+
+.MNG010_input_container {
+  width: calc(100%);
+  height: 100vh;
+  overflow: visible;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+.MNG010_bottom_container {
+  width: 100%;
+  height: 30px;
+  display: block;
+  align-content: center;
+  border: solid 1px $color_btn_top_header;
+  margin-top: 5px;
+  background-color: $color_white;
+}
+.MNG010_bottom_item {
+  margin-left: 15px;
+}
+
+.MNG010_bottom_item_prev_input {
+  float: right;
+  width: 200px;
+  margin: 0px 15px 0px 0px;
+  text-align: right;
+}
+
+.MNG010_form_top_cond_container {
+  margin: 10px 0px 10px 10px;
+  justify-content: start !important;
+}
+
+.MNG010_config_grid_table {
+  margin-top: 15px;
+}
+
+.manage_area_container {
+  width: 100%;
+  background-color: $color_white;
+  padding: 5px;
+  border-radius: 20px;
+  border: 1px solid $color_btn_top_header;
+}
+
+.form_top_cond_input_form {
+  width: 25%;
+  display: flex;
+}
+
+.form_cond_label {
+  align-content: center;
+  font-size: 10pt;
+  font-weight: bold;
+  color: $bg_color_select_option;
+  user-select: none !important;
+}

@@ -1,0 +1,22 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+
+.wqm030_input_container {
+  width: calc(100% - 315px);
+  height: 100%;
+  overflow: visible;
+  position: fixed;
+  margin-top: 10px;
+}
+
+.wqm030_header_title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.wqm030_grid_table_panel {
+  width: 100%;
+  height: calc(100vh - 105px);
+  overflow: auto;
+  font-size: 10pt;
+}

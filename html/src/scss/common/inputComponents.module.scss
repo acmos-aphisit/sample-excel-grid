@@ -1,0 +1,73 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+
+.input_group {
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+    flex: 1;
+  }
+}
+
+.contents_label {
+  color: $txt_color_main;
+  font-size: 1em;
+  width: 100px;
+  height: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.combo {
+  > input {
+    border-radius: 10px 0 0 10px;
+    border-right: 0;
+  }
+  > select {
+    border-radius: 0 10px 10px 0;
+  }
+
+  > input:disabled {
+    background-color: #dedee9;
+  }
+}
+
+.clear_btn {
+  position: absolute;
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  background-color: #fff;
+  top: 0;
+  right: 0;
+  height: auto;
+
+  > span {
+    position: absolute;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 1em;
+    color: #717171;
+  }
+
+  > button {
+    border-radius: 0;
+    border-top: 3px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    z-index: 2;
+    &:hover {
+      transform: none !important;
+      border-top: 3px solid #ccc;
+      border-bottom: 3px solid #ccc;
+      border-right: 3px solid #ccc;
+      border-left: unset;
+    }
+    &:active {
+      box-shadow: none !important;
+    }
+  }
+}

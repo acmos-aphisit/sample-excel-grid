@@ -1,0 +1,87 @@
+// 共通値
+$ruler: 10px;
+$color_red: #ae1100;
+$color_bg: #f4f7fc;
+$color_shadow: #babecc;
+$color_white: #fff;
+$color_black: #000;
+$color_dark: #333;
+$color_required: #ffe8b7;
+$color_sort: #444;
+
+// ボタン_色
+$color_btn_text: #5d5d5d;
+$color_btn_border: #5b5757;
+$color_btn_top_header: #a7a7a7;
+$color_btn_green: #4caf50;
+$color_btn_cancel: #ed7d31;
+$color_btn_blue: #4d5fb1;
+
+// ボーダーライン_色
+$color_border_gray: #5d5d5d;
+
+// テキストエリア、インプット
+$color_input_required_shadow: #e9c590;
+$color_input_required_highlight: #fff0bf;
+
+// セレクトボックス
+$color_select: #616161;
+$color_select_border: #ececec;
+$bg_color_select_option: #1c64d4;
+
+// スクロールバー
+$color_scroll_yellow: #d4aa70;
+$color_scroll_gray: #e4e4e4;
+$color_scroll_thumb: #393a3d;
+
+// 処理状況
+$color_upload_processing: #ffca28;
+$color_upload_success: #43a047;
+$color_upload_fail: #f44336;
+
+// 水質管理_色
+$color_top_header: #333;
+$color_primary: #0f5452;
+$color_text_error: #f44336;
+$color_text_c_error: #bc3de3;
+
+// 水質管理_背景色
+$bg_color_body: #fff;
+$bg_color_main: #e4e4e4;
+$bg_main_color: #4d5fb1;
+$bg_color_disabled: #dedee9;
+$bg_color_login: #d0f0ff;
+$bg_color_login_info: #fafafa;
+
+$txt_color_main: #4d5fb1;
+
+// ヘッダボタン
+$bg_header_button: #1c64d4;
+$bg_header_selected_button: #c0d6e5;
+
+// グリッドテーブル（ReactGrid）_上書き色
+$bg_grid_table_header: #4d5fb1;
+$bg_grid_table_header_gray: #a5a5a5;
+$bg_grid_table_header_orange: #ffa54f;
+$bg_grid_table_cell: #e3f2fd;
+$bg_grid_table_db_edit: #ffcc80;
+$bg_grid_disabled_cell: #dcdcdc;
+$bg_grid_setting_item: #fff8e1;
+$bg_grid_setting_point: #d9e1f2;
+
+$border_color_calrendar: #a0a096;
+$bg_outlier_table_header: #8faadc;
+
+$mask_background: #87ceeb;
+
+// セルの枠線
+$outline_orange: rgb(238, 141, 62);
+$cell_background_orange: rgba(238, 141, 62, 0.5);
+$outline_aqua: rgb(62, 188, 238);
+$cell_background_aqua: rgba(62, 188, 238, 0.5);
+$outline_blue: rgb(133, 143, 255);
+$cell_background_blue: rgba(134, 144, 255, 0.5);
+$outline_purple: rgb(247, 140, 255);
+$cell_background_purple: rgba(247, 140, 255, 0.5);
+$outline_green: rgb(143, 188, 155);
+$cell_background_green: rgba(160, 248, 184, 0.5);

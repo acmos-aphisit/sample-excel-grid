@@ -1,0 +1,70 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+// レスポンシブ用
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+// レスポンシブ用
+@mixin for-1255 {
+  @media screen and (max-width: 1255px) {
+    @content;
+  }
+}
+
+.WQM010_input_container {
+  width: calc(100% - 315px);
+  height: 89%;
+  overflow: auto;
+  position: fixed;
+  margin-top: 10px;
+
+  @include for-1366 {
+    height: 84%;
+  }
+}
+
+.WQM010_bottom_container {
+  width: 100%;
+  height: 30px;
+  display: block;
+  align-content: center;
+  border: solid 1px $color_btn_top_header;
+  margin-top: 5px;
+  background-color: $color_white;
+}
+.WQM010_bottom_item {
+  margin-left: 15px;
+}
+
+.WQM010_bottom_item_prev_input {
+  float: right;
+  width: 140px;
+  margin: 0px 15px 0px 0px;
+  text-align: right;
+}
+
+.WQM010_enter_to_right {
+  width: 25px;
+  margin-top: 2px;
+  background-repeat: no-repeat !important;
+  background-position: left bottom 50% !important;
+  background-size: 85%;
+  background-image: url("/img/enter-arrow.png") !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.WQM010_enter_to_bottom {
+  width: 25px;
+  margin-top: 6px;
+  background-repeat: no-repeat !important;
+  background-position: left bottom 50% !important;
+  background-size: 85%;
+  background-image: url("/img/enter-arrow.png") !important;
+  transition: all 0.2s ease-in-out;
+  transform: rotate(90deg);
+  cursor: pointer;
+}

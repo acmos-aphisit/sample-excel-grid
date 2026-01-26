@@ -1,0 +1,164 @@
+/* サイドメニュー_スタイル */
+
+// 色の固定値を呼出
+@use "../colors.scss" as *;
+
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+.top_sidebar {
+  width: 0;
+  // margin-right: 400px;
+  transition: 0.6s !important;
+}
+
+.sidemenu {
+  width: 400px;
+  min-width: 400px;
+  min-width: 20px !important;
+  height: 100%;
+  min-height: 100vh;
+  position: fixed !important;
+  display: block;
+  top: 45px !important;
+  left: 0 !important;
+  padding: 0 5px 0 0;
+  transition: 0.5s !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  background-color: $color_white;
+
+  @include for-1366 {
+    top: 45px !important;
+    font-size: 13px;
+  }
+}
+
+.sidemenu_top {
+  height: 24px;
+  // width: 375px;
+  width: 100%;
+  margin: 5px 10px 5px 10px;
+  align-items: center;
+  color: $color_btn_text;
+  text-align-last: right;
+  cursor: pointer;
+  // border: 1px solid $color_border_gray;
+  // border-radius: 10px;
+
+  .sidemenu_top_text {
+    margin-right: 45px;
+  }
+  .sidemenu_top_text_open {
+    display: block;
+    margin-right: 45px;
+  }
+  .sidemenu_top_text_close {
+    display: none;
+    margin-right: 45px;
+  }
+}
+
+.sidemenu_top_search {
+  height: 35px;
+  margin: 10px 0px;
+  align-items: center;
+
+  @include for-1366 {
+    margin: 5px 0px 0px 0px;
+  }
+}
+
+.sidemenu_middle {
+  padding-left: 10px;
+  height: calc(100% - 446px);
+  overflow: auto;
+
+  @include for-1366 {
+    height: calc(100% - 333px);
+  }
+}
+
+.sidemenu_bottom {
+  border: solid 1px $border_color_calrendar;
+  height: 270px;
+  margin: 0px 0px 0px 2px;
+  text-align: center;
+  align-items: center;
+
+  @include for-1366 {
+    height: 172px;
+  }
+}
+
+.sidemenu_open,
+.sidemenu_close {
+  display: none;
+}
+
+.side_menu_remove_top {
+  top: 0 !important;
+}
+
+.sidemenu_open {
+  // position: fixed;
+  position: absolute;
+  display: block;
+  z-index: 1;
+  // top: 66px;
+  // left: 360px;
+  top: 5px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: 0.5s !important;
+  background-color: $color_white;
+  background-image: url("/img/sidebar-hide.png");
+  background-size: cover;
+
+  // @include for-1366 {
+  //   top: 52px !important;
+  // }
+
+  h2 {
+    text-align: center;
+    color: $bg_main_color;
+  }
+}
+
+.sidemenu_close {
+  // position: fixed;
+  position: absolute;
+  display: block;
+  z-index: 1;
+  // top: 66px;
+  // left: 12px;
+  top: 5px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: 0.5s !important;
+  background-color: $color_white;
+  background-image: url("/img/sidebar-show.png");
+  background-size: cover;
+
+  // @include for-1366 {
+  //   top: 52px !important;
+  // }
+
+  h2 {
+    text-align: center;
+    color: $bg_main_color;
+  }
+}
+
+.side_search_menu {
+  @include for-1366 {
+    height: 30px;
+  }
+}

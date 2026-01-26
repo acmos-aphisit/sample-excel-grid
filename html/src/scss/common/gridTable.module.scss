@@ -1,0 +1,96 @@
+// 色の固定値を呼出
+@use "../colors" as *;
+
+@mixin for-1366 {
+  @media screen and (max-width: 1380px) {
+    @content;
+  }
+}
+
+.grid_table_panel {
+  width: 100%;
+  height: calc(100dvh - 181px);
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: calc(100dvh - 180px);
+  }
+}
+
+.grid_simple_table_panel {
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 145px);
+  overflow: auto;
+  font-size: 10pt;
+}
+
+.grid_table_setting_panel {
+  width: 100%;
+  height: calc(100dvh - 195px);
+  overflow: auto;
+  font-size: 10pt;
+  position: absolute;
+  top: -25px;
+
+  @include for-1366 {
+    height: calc(100dvh - 175px);
+  }
+}
+
+.grid_simple_context_table_panel {
+  width: 100%;
+  height: calc(100dvh - 210px);
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: calc(100dvh - 270px);
+  }
+}
+
+.grid_simple_context_table_panel_no_search {
+  width: 100%;
+  height: calc(100dvh - 85px);
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: calc(100dvh - 145px);
+  }
+}
+
+.grid_simple_context_table_panel_no_search_msg {
+  width: 100%;
+  height: calc(100dvh - 135px) !important;
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: calc(100dvh - 195px) !important;
+  }
+}
+
+.grid_simple_context_table_panel_modal {
+  width: 100%;
+  height: 34dvh;
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: 200px;
+  }
+}
+
+.grid_simple_context_table_panel_modal_msg {
+  width: 100%;
+  height: calc(34dvh - 43px);
+  overflow: auto;
+  font-size: 10pt;
+
+  @include for-1366 {
+    height: 160px;
+  }
+}
+
